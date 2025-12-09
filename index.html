@@ -71,8 +71,10 @@
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0">
                 <div class="relative flex justify-center md:justify-start">
                     <!-- Wave Decoration -->
-                    <svg class="absolute top-1/2 -translate-y-1/2 -z-10 pointer-events-none text-tykoe-periwinkle left-1/2 -translate-x-1/2 w-[120%] md:left-0 md:translate-x-[-5%] md:w-[140%]" viewBox="0 0 520 60" fill="none" preserveAspectRatio="xMidYMid meet">
-                        <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg class="absolute top-1/2 -translate-y-1/2 -z-10 pointer-events-none text-tykoe-periwinkle left-1/2 -translate-x-1/2 w-[120%] md:left-0 md:translate-x-[-5%] md:w-[140%]" 
+                         viewBox="0 0 520 60" fill="none" preserveAspectRatio="xMidYMid meet"
+                         style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
+                        <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     
                     <a href="index.html" class="text-2xl md:text-4xl font-garamond font-extrabold italic tracking-[0.4em] text-tykoe-gold hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(255,179,0,0.3)]">
@@ -87,11 +89,11 @@
                     Work
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-100"></span>
                 </a>
-                <a href="about.html" class="relative text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-tykoe-periwinkle transition-colors py-2 group">
+                <a href="about.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle/60 hover:text-tykoe-periwinkle transition-colors py-2 group">
                     About
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="contact.html" class="relative text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-tykoe-periwinkle transition-colors py-2 group">
+                <a href="contact.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle/60 hover:text-tykoe-periwinkle transition-colors py-2 group">
                     Contact
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
@@ -169,7 +171,7 @@
         <!-- Project Grid -->
         <div id="project-grid" class="columns-2 md:columns-2 lg:columns-3 gap-2 md:gap-4 space-y-2 md:space-y-4">
             
-            <!-- Project 1 -->
+            <!-- Project 1 (No Link) -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
                  data-id="1" data-title="Neon Horizons" data-category="Photography" data-img="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
                  data-desc="A study of light and shadow in urban environments, captured in motion.">
@@ -184,9 +186,9 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project 2 (With Link) -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="2" data-title="Abstract Form" data-category="3D Design" data-img="https://picsum.photos/600/800?random=2"
+                 data-id="2" data-title="Abstract Form" data-category="3D Design" data-img="https://picsum.photos/600/800?random=2" data-link="https://example.com/project2"
                  data-desc="Procedural generation experiments using Blender and Python.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
                     <img src="https://picsum.photos/600/800?random=2" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
@@ -201,7 +203,7 @@
 
             <!-- Project 3 -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="3" data-title="Minimalist UI" data-category="Web Design" data-img="https://picsum.photos/800/800?random=3"
+                 data-id="3" data-title="Minimalist UI" data-category="Web Design" data-img="https://picsum.photos/800/800?random=3" data-link="https://example.com/project3"
                  data-desc="A clean, typography-focused interface for a fintech startup.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
                     <img src="https://picsum.photos/800/800?random=3" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
@@ -216,7 +218,7 @@
 
             <!-- Project 4 -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="4" data-title="Analog Memories" data-category="Film" data-img="https://picsum.photos/700/500?random=4"
+                 data-id="4" data-title="Analog Memories" data-category="Film" data-img="https://picsum.photos/700/500?random=4" data-link="https://example.com/project4"
                  data-desc="35mm film photography from a summer in Tokyo.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
                     <img src="https://picsum.photos/700/500?random=4" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
@@ -231,7 +233,7 @@
 
              <!-- Project 5 -->
              <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="5" data-title="Echoes" data-category="Branding" data-img="https://picsum.photos/600/600?random=5"
+                 data-id="5" data-title="Echoes" data-category="Branding" data-img="https://picsum.photos/600/600?random=5" data-link="https://example.com/project5"
                  data-desc="Identity design for a modern music festival.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
                     <img src="https://picsum.photos/600/600?random=5" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
@@ -246,7 +248,7 @@
 
             <!-- Project 6 -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="6" data-title="Void" data-category="Art Direction" data-img="https://picsum.photos/500/700?random=6"
+                 data-id="6" data-title="Void" data-category="Art Direction" data-img="https://picsum.photos/500/700?random=6" data-link="https://example.com/project6"
                  data-desc="Editorial layout and concept for Void Magazine.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
                     <img src="https://picsum.photos/500/700?random=6" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
@@ -281,33 +283,31 @@
     <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8 lg:p-12 pt-24 md:pt-24 hidden">
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300"></div>
         
-        <!-- 
-            Close Button (Moved outside the modal content container)
-            Positioned fixed relative to viewport/backdrop.
-            Top: 110px (to sit below the 80px fixed header + spacing)
-            Right: 24px
-            Z-index: 110 (Above modal z-100, below nav z-120 if overlapping, but positioned to avoid it)
-        -->
-        <button id="close-modal" class="fixed top-28 right-6 z-[110] text-tykoe-crimson hover:text-tykoe-gold md:hidden p-3 bg-black/80 rounded-full border border-tykoe-crimson/50 shadow-[0_0_15px_rgba(255,0,60,0.3)] backdrop-blur-md transition-all active:scale-95">
-            <i data-lucide="x" width="24" height="24"></i>
-        </button>
-
         <div class="relative z-10 w-full max-w-7xl h-full md:h-auto md:max-h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row overflow-y-auto md:overflow-hidden animate-in fade-in zoom-in-95 duration-300">
             
-            <!-- Desktop Close Button -->
-            <button id="close-modal-desktop" class="absolute top-4 right-4 z-50 text-tykoe-crimson hover:text-tykoe-gold hidden md:block">
-                <i data-lucide="x" width="32" height="32"></i>
-            </button>
-
             <!-- Image Side -->
-            <!-- 
-                Changed: 
-                - object-cover -> object-contain (Fixes cropping)
-                - Added bg-black to fill spacing if aspect ratio differs
-            -->
-            <div class="w-full md:w-[60%] h-auto md:h-auto bg-black relative border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0">
-                <img id="modal-img" src="" class="w-full h-auto md:h-full object-contain bg-black">
-                <div class="absolute bottom-4 left-4 text-tykoe-gold font-mono text-xs hidden md:block">IMG_SRC: RAW_DATA</div>
+            <div class="relative w-full md:w-[60%] h-[50vh] md:h-auto bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 group">
+                <!-- 
+                   Image: w-full h-full object-cover.
+                   This satisfies "no letterboxing" and "meet the edges".
+                   It will crop, but fills the pane completely.
+                -->
+                <img id="modal-img" src="" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                
+                <!-- Controls Bar Overlay (Bottom of Image) -->
+                <div class="absolute bottom-0 left-0 w-full p-4 md:p-6 flex justify-between items-end bg-gradient-to-t from-black/90 to-transparent">
+                    
+                    <!-- Close Button (Left) -->
+                    <button id="close-modal" class="text-tykoe-crimson hover:text-white transition-colors font-mono text-xs tracking-widest flex items-center gap-2 cursor-pointer group/btn">
+                        <i data-lucide="x" width="16" height="16" class="group-hover/btn:rotate-90 transition-transform"></i>
+                        CLOSE_VIEW
+                    </button>
+            
+                    <!-- Image Text (Right) -->
+                    <div class="text-tykoe-gold font-mono text-xs tracking-widest text-right">
+                        IMG_SRC: RAW_DATA
+                    </div>
+                </div>
             </div>
 
             <!-- Content Side -->
@@ -328,10 +328,10 @@
                     <p class="text-tykoe-periwinkle text-xs border-l-2 border-tykoe-crimson pl-4 italic">"Visual data reconstructed from archive."</p>
                 </div>
                 <div class="p-6 md:p-10 border-t border-white/5 bg-white/[0.02] shrink-0">
-                    <button class="flex items-center justify-between w-full group bg-tykoe-gold hover:bg-tykoe-periwinkle text-black hover:text-white px-6 py-4 font-bold font-consolas transition-all duration-300">
+                    <a id="modal-link-btn" href="#" target="_blank" class="flex items-center justify-between w-full group bg-tykoe-gold hover:bg-tykoe-periwinkle text-black hover:text-white px-6 py-4 font-bold font-consolas transition-all duration-300">
                         <span>VISIT LIVE PROJECT</span>
                         <i data-lucide="external-link" width="20"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
