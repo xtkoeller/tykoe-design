@@ -55,7 +55,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-nebula-dark text-white antialiased selection:bg-tykoe-periwinkle selection:text-nebula-dark bg-maroon-gradient min-h-screen flex flex-col">
 
@@ -281,15 +280,33 @@
     <!-- Project Modal (Hidden by default) -->
     <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8 lg:p-12 pt-24 md:pt-24 hidden">
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300"></div>
+        
+        <!-- 
+            Close Button (Moved outside the modal content container)
+            Positioned fixed relative to viewport/backdrop.
+            Top: 110px (to sit below the 80px fixed header + spacing)
+            Right: 24px
+            Z-index: 110 (Above modal z-100, below nav z-120 if overlapping, but positioned to avoid it)
+        -->
+        <button id="close-modal" class="fixed top-28 right-6 z-[110] text-tykoe-crimson hover:text-tykoe-gold md:hidden p-3 bg-black/80 rounded-full border border-tykoe-crimson/50 shadow-[0_0_15px_rgba(255,0,60,0.3)] backdrop-blur-md transition-all active:scale-95">
+            <i data-lucide="x" width="24" height="24"></i>
+        </button>
+
         <div class="relative z-10 w-full max-w-7xl h-full md:h-auto md:max-h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row overflow-y-auto md:overflow-hidden animate-in fade-in zoom-in-95 duration-300">
             
-            <button id="close-modal" class="absolute top-4 right-4 z-50 text-tykoe-crimson hover:text-tykoe-gold md:hidden">
+            <!-- Desktop Close Button -->
+            <button id="close-modal-desktop" class="absolute top-4 right-4 z-50 text-tykoe-crimson hover:text-tykoe-gold hidden md:block">
                 <i data-lucide="x" width="32" height="32"></i>
             </button>
 
             <!-- Image Side -->
+            <!-- 
+                Changed: 
+                - object-cover -> object-contain (Fixes cropping)
+                - Added bg-black to fill spacing if aspect ratio differs
+            -->
             <div class="w-full md:w-[60%] h-auto md:h-auto bg-black relative border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0">
-                <img id="modal-img" src="" class="w-full h-auto md:h-full object-contain md:object-cover">
+                <img id="modal-img" src="" class="w-full h-auto md:h-full object-contain bg-black">
                 <div class="absolute bottom-4 left-4 text-tykoe-gold font-mono text-xs hidden md:block">IMG_SRC: RAW_DATA</div>
             </div>
 
@@ -325,6 +342,5 @@
         lucide.createIcons();
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
