@@ -1,0 +1,26 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom Scrollbar for Project Details */
+.scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: #000;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 179, 0, 0.2);
+    border-radius: 3px;
+}
+
+body {
+    background-color: #050101;
+    color: #e2e2e2;
+}

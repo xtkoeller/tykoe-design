@@ -1,0 +1,12 @@
+{
+  "name": "tykoe-portfolio-static",
+  "version": "1.0.0",
+  "description": "Static portfolio site for Tykoe",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
