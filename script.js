@@ -47,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Modal Logic (Index Page) ---
     const modalBackdrop = document.getElementById('modal-backdrop');
-    const closeModalBtn = document.getElementById('close-modal'); // Mobile/Fixed
-    const closeModalDesktopBtn = document.getElementById('close-modal-desktop'); // Desktop/Absolute
+    const closeModalBtn = document.getElementById('close-modal');
     
     // Modal Content Elements
     const modalTitle = document.getElementById('modal-title');
@@ -56,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDesc = document.getElementById('modal-desc');
     const modalCat = document.getElementById('modal-cat');
     const modalId = document.getElementById('modal-id');
+    const modalLinkBtn = document.getElementById('modal-link-btn');
 
     function openModal(card) {
         // Populate Data
@@ -64,6 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
         modalDesc.textContent = card.getAttribute('data-desc');
         modalCat.textContent = card.getAttribute('data-category');
         modalId.textContent = card.getAttribute('data-id').padStart(3, '0');
+
+        // Link Logic
+        const link = card.getAttribute('data-link');
+        if(link && modalLinkBtn) {
+            modalLinkBtn.href = link;
+            modalLinkBtn.classList.remove('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
+            modalLinkBtn.querySelector('span').textContent = 'VISIT LIVE PROJECT';
+        } else if (modalLinkBtn) {
+            modalLinkBtn.removeAttribute('href');
+            modalLinkBtn.classList.add('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
+            modalLinkBtn.querySelector('span').textContent = 'INTERNAL ARCHIVE ONLY';
+        }
 
         // Show Modal
         modalBackdrop.classList.remove('hidden');
@@ -81,12 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('click', () => openModal(card));
         });
 
-        // Close on X Click (Mobile)
+        // Close on X Click
         if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
         
-        // Close on X Click (Desktop)
-        if(closeModalDesktopBtn) closeModalDesktopBtn.addEventListener('click', closeModal);
-
         // Close on Backdrop Click
         modalBackdrop.addEventListener('click', (e) => {
             // Check if clicking backdrop or the blur layer
