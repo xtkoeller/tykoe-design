@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Modal Logic (Index Page) ---
     const modalBackdrop = document.getElementById('modal-backdrop');
-    const closeModalBtn = document.getElementById('close-modal');
+    const closeModalBtn = document.getElementById('close-modal'); // Mobile/Fixed
+    const closeModalDesktopBtn = document.getElementById('close-modal-desktop'); // Desktop/Absolute
     
     // Modal Content Elements
     const modalTitle = document.getElementById('modal-title');
@@ -80,12 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('click', () => openModal(card));
         });
 
-        // Close on X Click
+        // Close on X Click (Mobile)
         if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        
+        // Close on X Click (Desktop)
+        if(closeModalDesktopBtn) closeModalDesktopBtn.addEventListener('click', closeModal);
 
         // Close on Backdrop Click
         modalBackdrop.addEventListener('click', (e) => {
-            if(e.target === modalBackdrop || e.target.classList.contains('bg-nebula-dark/95')) {
+            // Check if clicking backdrop or the blur layer
+            if(e.target === modalBackdrop || e.target.classList.contains('absolute') && e.target.classList.contains('inset-0')) {
                 closeModal();
             }
         });
