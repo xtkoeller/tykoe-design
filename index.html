@@ -74,7 +74,7 @@
                     <svg class="absolute top-1/2 -translate-y-1/2 -z-10 pointer-events-none text-tykoe-periwinkle left-1/2 -translate-x-1/2 w-[120%] md:left-0 md:translate-x-[-5%] md:w-[140%]" 
                          viewBox="0 0 520 60" fill="none" preserveAspectRatio="xMidYMid meet"
                          style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
-                        <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     
                     <a href="index.html" class="text-2xl md:text-4xl font-garamond font-extrabold italic tracking-[0.4em] text-tykoe-gold hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(255,179,0,0.3)]">
@@ -89,11 +89,11 @@
                     Work
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-100"></span>
                 </a>
-                <a href="about.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle/60 hover:text-tykoe-periwinkle transition-colors py-2 group">
+                <a href="about.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     About
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="contact.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle/60 hover:text-tykoe-periwinkle transition-colors py-2 group">
+                <a href="contact.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     Contact
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
@@ -280,38 +280,37 @@
     </footer>
 
     <!-- Project Modal (Hidden by default) -->
-    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8 lg:p-12 pt-24 md:pt-24 hidden">
-        <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300"></div>
+    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8 lg:p-12 pt-24 md:pt-24 hidden overflow-y-auto custom-scrollbar md:overflow-hidden">
+        <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
         
-        <div class="relative z-10 w-full max-w-7xl h-full md:h-auto md:max-h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row overflow-y-auto md:overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+        <div class="relative z-10 w-full max-w-7xl h-full md:h-auto md:max-h-[90vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 overflow-hidden">
             
             <!-- Image Side -->
-            <div class="relative w-full md:w-[60%] h-[50vh] md:h-auto bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 group">
+            <div class="relative w-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 md:overflow-y-auto custom-scrollbar group">
                 <!-- 
-                   Image: w-full h-full object-cover.
-                   This satisfies "no letterboxing" and "meet the edges".
-                   It will crop, but fills the pane completely.
+                   Image: w-full h-auto (natural height).
+                   Sticky bottom controls.
                 -->
-                <img id="modal-img" src="" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                <img id="modal-img" src="" class="w-full h-auto block opacity-90 group-hover:opacity-100 transition-opacity duration-500">
                 
-                <!-- Controls Bar Overlay (Bottom of Image) -->
-                <div class="absolute bottom-0 left-0 w-full p-4 md:p-6 flex justify-between items-end bg-gradient-to-t from-black/90 to-transparent">
+                <!-- Controls Bar Overlay (Sticky at Bottom) -->
+                <div class="sticky bottom-0 left-0 w-full p-4 md:p-6 flex justify-between items-end bg-gradient-to-t from-black via-black/90 to-transparent z-20">
                     
                     <!-- Close Button (Left) -->
-                    <button id="close-modal" class="text-tykoe-crimson hover:text-white transition-colors font-mono text-xs tracking-widest flex items-center gap-2 cursor-pointer group/btn">
-                        <i data-lucide="x" width="16" height="16" class="group-hover/btn:rotate-90 transition-transform"></i>
+                    <button id="close-modal" class="text-tykoe-crimson hover:text-white transition-colors font-mono text-[10px] tracking-widest flex items-center gap-2 cursor-pointer group/btn">
+                        <i data-lucide="x" width="14" height="14" class="group-hover/btn:rotate-90 transition-transform"></i>
                         CLOSE_VIEW
                     </button>
             
                     <!-- Image Text (Right) -->
-                    <div class="text-tykoe-gold font-mono text-xs tracking-widest text-right">
+                    <div class="text-tykoe-gold font-mono text-[10px] tracking-widest text-right">
                         IMG_SRC: RAW_DATA
                     </div>
                 </div>
             </div>
 
             <!-- Content Side -->
-            <div class="w-full md:w-[40%] flex flex-col h-auto md:h-full">
+            <div class="w-full md:w-[35%] flex flex-col h-auto md:h-full md:overflow-y-auto custom-scrollbar bg-[#050101]">
                 <div class="p-6 md:p-10 border-b border-white/5 pb-6 relative shrink-0">
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-tykoe-gold to-tykoe-periwinkle opacity-50"></div>
                     <div class="flex items-center gap-2 text-tykoe-periwinkle mb-2 text-xs font-mono uppercase tracking-widest">
@@ -322,7 +321,7 @@
                         <span id="modal-cat" class="inline-flex items-center gap-1 px-3 py-1 bg-tykoe-gold/10 border border-tykoe-gold/30 text-tykoe-gold text-[10px] md:text-xs uppercase tracking-wider font-bold shadow-sm"></span>
                     </div>
                 </div>
-                <div class="p-6 md:p-10 md:overflow-y-auto flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6">
+                <div class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6">
                     <p id="modal-desc" class="first-letter:text-3xl first-letter:text-tykoe-gold first-letter:font-serif first-letter:mr-2 first-letter:float-left first-letter:leading-none"></p>
                     <p class="opacity-80">Additional project details, methodology, and creative process documentation would render here. The system loads the high-fidelity assets directly to ensure visual consistency.</p>
                     <p class="text-tykoe-periwinkle text-xs border-l-2 border-tykoe-crimson pl-4 italic">"Visual data reconstructed from archive."</p>
