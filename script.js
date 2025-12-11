@@ -339,13 +339,7 @@ const PROJECTS = [
         file: "no-dawg_rotr07.jpg",
         desc: "Tattoo style illustration design."
     },
-    {
-        id: "46",
-        title: "No Dawg (Logan)",
-        category: "ILLUSTRATION",
-        file: "no-dawg-logan-noedit_jj7x8d.jpg",
-        desc: "Variant character design."
-    },
+
     {
         id: "47",
         title: "Open Roads",
