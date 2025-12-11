@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const category = btn.getAttribute('data-category');
 
                 projectCards.forEach(card => {
-                    if(category === 'ALL' || card.getAttribute('data-category') === category) {
+                    const cardCategories = card.getAttribute('data-category').split(' ');
+                    // If category is ALL, or if the card's category list includes the selected category
+                    if(category === 'ALL' || cardCategories.includes(category)) {
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
@@ -52,15 +54,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal Content Elements
     const modalTitle = document.getElementById('modal-title');
     const modalImg = document.getElementById('modal-img');
+    const modalVideo = document.getElementById('modal-video');
     const modalDesc = document.getElementById('modal-desc');
     const modalCat = document.getElementById('modal-cat');
     const modalId = document.getElementById('modal-id');
     const modalLinkBtn = document.getElementById('modal-link-btn');
 
+    function isVideoFile(src) {
+        return src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.webm');
+    }
+
     function openModal(card) {
         // Populate Data
         modalTitle.textContent = card.getAttribute('data-title');
-        modalImg.src = card.getAttribute('data-img');
+        
+        const src = card.getAttribute('data-img');
+        
+        if (isVideoFile(src)) {
+            // Show Video, Hide Image
+            modalVideo.src = src;
+            modalVideo.classList.remove('hidden');
+            modalVideo.classList.add('block');
+            modalImg.classList.add('hidden');
+            modalImg.classList.remove('block');
+            modalVideo.play();
+        } else {
+            // Show Image, Hide Video
+            modalImg.src = src;
+            modalImg.classList.remove('hidden');
+            modalImg.classList.add('block');
+            modalVideo.classList.add('hidden');
+            modalVideo.classList.remove('block');
+            modalVideo.pause();
+        }
+
         modalDesc.textContent = card.getAttribute('data-desc');
         modalCat.textContent = card.getAttribute('data-category');
         modalId.textContent = card.getAttribute('data-id').padStart(3, '0');
@@ -85,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeModal() {
         modalBackdrop.classList.add('hidden');
         document.body.style.overflow = ''; // Unlock Scroll
+        if(modalVideo) modalVideo.pause();
     }
 
     if(modalBackdrop) {
