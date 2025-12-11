@@ -5,9 +5,9 @@
 // Your Cloudinary Configuration
 const CLOUD_NAME = "dydqxus0f";
 
-// ⚠️ IMPORTANT: set this to the folder name in your Cloudinary Media Library.
-// based on your previous message, "assets" is the correct folder.
-const CLOUD_FOLDER = "assets"; 
+// ⚠️ IMPORTANT: Based on your settings screenshot, "Prepend a path" is OFF.
+// This means we should NOT include the folder name in the URL generation.
+const CLOUD_FOLDER = ""; 
 
 // Helper to generate the correct Cloudinary URL based on file type
 const getAssetUrl = (filename) => {
