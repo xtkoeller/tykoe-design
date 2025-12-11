@@ -499,22 +499,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if(project.link) card.setAttribute('data-link', project.link);
 
             let mediaHTML = '';
-            // Removed onerror logic as requested
+            // Removed sepia classes
             if (isVid) {
                 // Remove h-auto constraint so it flows naturally in columns
-                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="w-full object-contain filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105"></video>`;
+                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="w-full object-contain transition-transform duration-700 group-hover:scale-105"></video>`;
             } else {
-                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="w-full object-contain filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">`;
+                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="w-full object-contain transition-transform duration-700 group-hover:scale-105">`;
             }
 
             const mainCategory = project.category.split(' ')[0];
 
-            // Removed min-h-[200px] to allow natural height (full visibility)
+            // Changed opacity-0 group-hover:opacity-100 to opacity-100 (always visible)
             card.innerHTML = `
                 <div class="relative overflow-hidden bg-nebula-maroon/20">
                     ${mediaHTML}
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
-                    <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-100 transition-opacity duration-300">
                         <div class="w-full h-[1px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2"></div>
                         <h3 class="text-xs md:text-sm font-consolas font-bold text-white group-hover:text-tykoe-gold">${project.title}</h3>
                         <p class="text-[9px] font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ${mainCategory}</p>
@@ -581,21 +581,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modalCat.textContent = card.getAttribute('data-category');
         modalId.textContent = card.getAttribute('data-id');
 
-        // External Link Logic (Commented Out per request)
-        /*
-        const link = card.getAttribute('data-link');
-        if(link && modalLinkBtn) {
-            modalLinkBtn.href = link;
-            modalLinkBtn.classList.remove('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
-            modalLinkBtn.querySelector('span').textContent = 'VISIT LIVE PROJECT';
-        } else if (modalLinkBtn) {
-            modalLinkBtn.removeAttribute('href');
-            modalLinkBtn.classList.add('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
-            modalLinkBtn.querySelector('span').textContent = 'INTERNAL ARCHIVE ONLY';
-        }
-        */
-       // Hide link button completely for now
-       if(modalLinkBtn) modalLinkBtn.parentElement.style.display = 'none';
+        // Hide link button completely for now
+        if(modalLinkBtn) modalLinkBtn.parentElement.style.display = 'none';
 
         // Show Modal
         modalBackdrop.classList.remove('hidden');
