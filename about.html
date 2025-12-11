@@ -43,7 +43,7 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-[120] font-mono py-5 border-b border-tykoe-gold bg-gradient-to-br from-[#250808] to-[#401212]">
-        <div class="container mx-auto px-6 flex justify-between items-center relative min-h-[40px]">
+        <div class="container mx-auto max-w-[80%] px-6 flex justify-between items-center relative min-h-[40px]">
             <button id="mobile-menu-btn" class="md:hidden z-20 text-tykoe-periwinkle hover:text-white transition-colors">
                 <i data-lucide="more-vertical" width="28" height="28"></i>
             </button>
@@ -55,19 +55,19 @@
                         style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
                         <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <a href="index.html" class="text-2xl md:text-4xl font-garamond font-extrabold italic tracking-[0.4em] text-tykoe-gold hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(255,179,0,0.3)]">TYKOE</a>
+                    <a href="/" class="text-2xl md:text-4xl font-garamond font-extrabold italic tracking-[0.4em] text-tykoe-gold hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(255,179,0,0.3)]">TYKOE</a>
                 </div>
             </div>
             <div class="hidden md:flex space-x-12">
-                <a href="index.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
+                <a href="/" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     Work
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="about.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-gold py-2 group">
+                <a href="about" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-gold py-2 group">
                     About
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-100"></span>
                 </a>
-                <a href="contact.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
+                <a href="contact" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     Contact
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
@@ -81,9 +81,9 @@
             <i data-lucide="x" width="32" height="32"></i>
         </button>
         <div class="flex flex-col items-start space-y-12 pl-12 w-full max-w-md mx-auto">
-            <a href="index.html" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Work</a>
-            <a href="about.html" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">About</a>
-            <a href="contact.html" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Contact</a>
+            <a href="/" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Work</a>
+            <a href="about" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">About</a>
+            <a href="contact" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Contact</a>
         </div>
         <div class="absolute bottom-12 w-full text-center text-tykoe-gold font-mono text-xs uppercase tracking-[0.2em] animate-pulse">
             [ SYSTEM ONLINE ]
@@ -91,12 +91,12 @@
     </div>
 
     <!-- About Content -->
-    <div class="pt-32 pb-20 px-6 container mx-auto flex-grow flex flex-col justify-center relative overflow-hidden">
+    <div class="pt-32 pb-20 px-6 container mx-auto max-w-[80%] flex-grow flex flex-col justify-center relative overflow-hidden">
         <div class="max-w-6xl relative z-10 mx-auto w-full">
             <div class="grid md:grid-cols-12 gap-16 items-center">
                 
                 <!-- Image -->
-                <div class="md:col-span-5 relative order-2 md:order-1 h-[600px] overflow-hidden rounded-sm border-l border-tykoe-periwinkle/30 bg-black/30 group">
+                <div class="md:col-span-5 relative order-2 md:order-1 h-[500px] overflow-hidden rounded-sm border-l border-tykoe-periwinkle/30 bg-black/30 group">
                     <img 
                     src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop"
                     alt="Cybernetic Abstract"
@@ -110,12 +110,12 @@
 
                 <!-- Text -->
                 <div class="md:col-span-7 order-1 md:order-2 relative z-20">
-                    <h2 class="text-5xl md:text-7xl font-consolas font-bold mb-12 tracking-tighter text-white">
+                    <h2 class="text-4xl md:text-6xl font-consolas font-bold mb-12 tracking-tighter text-white">
                         THE<br/>
                         <span class="text-tykoe-periwinkle">OPERATOR</span>
                     </h2>
                     
-                    <div class="text-lg md:text-xl leading-relaxed text-gray-300 space-y-6 font-mono font-light border-l border-tykoe-periwinkle/20 pl-8 backdrop-blur-sm bg-black/20 p-6 rounded-r-lg">
+                    <div class="text-base md:text-lg leading-relaxed text-gray-300 space-y-6 font-mono font-light border-l border-tykoe-periwinkle/20 pl-8 backdrop-blur-sm bg-black/20 p-6 rounded-r-lg">
                         <p>I create meaningful digital experiences that blend aesthetics with functionality. Based in the cloud, working worldwide.</p>
                         <p>
                             Forged in the blood moon nebula, this platform serves as a repository for creative experiments and visual data. 
@@ -129,7 +129,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-red-900/20 bg-nebula-dark py-12 px-6 font-mono text-xs uppercase tracking-widest relative z-20">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-gray-600">
+        <div class="container mx-auto max-w-[80%] flex flex-col md:flex-row justify-between items-center text-gray-600">
           <div class="flex items-center gap-4 mb-4 md:mb-0">
               <a href="index.html" class="hover:text-tykoe-gold transition-colors">TYKOE.COM</a>
               <span class="text-tykoe-periwinkle/30">//</span>
