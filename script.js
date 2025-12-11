@@ -2,181 +2,428 @@
 // CONFIGURATION
 // ==========================================
 
-// CHANGE THIS URL to your external host (e.g., Cloudinary, AWS S3, or GitHub Pages URL)
-// Example: const ASSET_BASE_URL = "https://res.cloudinary.com/your-cloud-name/image/upload/v1/assets/";
-const ASSET_BASE_URL = "https://res.cloudinary.com/dydqxus0f/image/upload/assets/"; 
+// Your Cloudinary Configuration
+const CLOUD_NAME = "dydqxus0f";
+const CLOUD_FOLDER = "assets"; // The folder name you created in Cloudinary
+
+// Helper to generate the correct Cloudinary URL based on file type
+const getAssetUrl = (filename) => {
+    const isVideo = filename.toLowerCase().endsWith('.mp4') || filename.toLowerCase().endsWith('.webm');
+    const resourceType = isVideo ? 'video' : 'image';
+    
+    // Cloudinary Transformations:
+    // q_auto: Automatically adjusts quality/compression
+    // f_auto: Automatically serves the best format (e.g. WebP)
+    const params = isVideo ? 'q_auto' : 'f_auto,q_auto';
+
+    return `https://res.cloudinary.com/${CLOUD_NAME}/${resourceType}/upload/${params}/${CLOUD_FOLDER}/${filename}`;
+};
 
 // ==========================================
 // PROJECT DATA
 // ==========================================
 const PROJECTS = [
+    // --- EXISTING 24 ---
     {
         id: "01",
         title: "Almonds",
         category: "MOTION ART",
-        file: "almonds.mp4",
+        file: "almonds_cn4acj.mp4",
         desc: "Cinematic sequence exploring organic forms and fluid motion. A study in texture and light."
     },
     {
         id: "02",
         title: "The Abyss Between",
         category: "ART 3D",
-        file: "abyss-between.webp",
+        file: "abyss-between_cndtwf.webp",
         desc: "Visualizing the space between thoughts in a digital void. Rendered in Redshift."
     },
     {
         id: "03",
         title: "Baby Hairs",
         category: "ILLUSTRATION",
-        file: "baby-hairs.jpg",
+        file: "baby-hairs_tlalg3.jpg",
         desc: "Stylized portraiture emphasizing texture and vibrant, neo-pastel palettes."
     },
     {
         id: "04",
         title: "Smile Portal",
         category: "MOTION BRANDING",
-        file: "smile-portal.gif",
+        file: "smile-portal_auvlou.gif",
         desc: "Animated brand portal for the Smile Shop identity system. Loops infinitely."
     },
     {
         id: "05",
         title: "Carlin",
         category: "ILLUSTRATION",
-        file: "carlin.jpg",
+        file: "carlin-2_sntssj.jpg",
         desc: "Digital tribute to the legend of stand-up comedy. Vector meets texture."
     },
     {
         id: "06",
         title: "Cosmonaut",
         category: "ART ILLUSTRATION",
-        file: "cosmonaut.jpg",
+        file: "cosmonaut_gordwu.jpg",
         desc: "Lost in the digital void. A study of isolation in space and retro-futurism."
     },
     {
         id: "07",
         title: "Dayton DJ",
         category: "MOTION BRANDING",
-        file: "dayton-mobile-dj.gif",
+        file: "dayton-mobile-dj_xfz5oz.gif",
         desc: "Kinetic logo animation for an audio events company. Rhythm in motion."
     },
     {
         id: "08",
         title: "Eklund Aviation",
         category: "BRANDING DESIGN",
-        file: "eklund-aviation.png",
+        file: "eklund-aviation_y4qikz.png",
         desc: "Corporate identity design focusing on classic flight aesthetics and gold foil."
     },
     {
         id: "09",
-        title: "Gump Series",
+        title: "Gump Series: Boat",
         category: "ILLUSTRATION",
-        file: "gump-boat.webp",
+        file: "gump-boat_yafenw.webp",
         desc: "Conceptual art series based on key scenes from Forrest Gump. Minimalist approach."
     },
     {
         id: "10",
         title: "Manual Override",
         category: "MOTION ART",
-        file: "IMG_4106.gif",
+        file: "IMG_4106_vszt7u.gif",
         desc: "Skeletal motion study examining biological mechanics and x-ray aesthetics."
     },
     {
         id: "11",
         title: "Haus",
         category: "DESIGN",
-        file: "haus.webp",
+        file: "haus_l3lyqs.webp",
         desc: "Architectural poster design and typography layout. Swiss style influence."
     },
     {
         id: "12",
         title: "In Da Matrix",
         category: "ILLUSTRATION ART",
-        file: "in-da-matrix.webp",
+        file: "in-da-matrix_v0wsqk.webp",
         desc: "Cyberpunk character design inspired by digital simulations and glitch art."
     },
     {
         id: "13",
         title: "I'm Clear",
         category: "ILLUSTRATION ART",
-        file: "im-clear-1080.webp",
+        file: "im-clear-1080_xwue7l.webp",
         desc: "Skull motif composition with vibrant gradients and surrealist elements."
     },
     {
         id: "14",
         title: "Loch Doubt",
         category: "MOTION DESIGN",
-        file: "loch-doubt-title_001.gif",
+        file: "loch-doubt-title_001_rzdapq.gif",
         desc: "Title sequence animation for independent film project. Moody and atmospheric."
     },
     {
         id: "15",
         title: "Marc",
         category: "DESIGN BRANDING",
-        file: "marc-itunes.jpg",
+        file: "marc-itunes_w6bkyn.jpg",
         desc: "Podcast cover art and layout design. Bold colors for high visibility."
     },
     {
         id: "16",
         title: "Miami Display",
         category: "DESIGN BRANDING",
-        file: "miami-display-noedit.jpg",
+        file: "miami-display-noedit.jpg", 
         desc: "Physical installation mockup for retail display. 80s synthwave aesthetic."
     },
     {
         id: "17",
         title: "Nemesis",
         category: "ILLUSTRATION ART",
-        file: "nemesis.jpg",
+        file: "nemesis-2_k2qcjz.jpg",
         desc: "Expressive character illustration with glitch elements and high contrast."
     },
     {
         id: "18",
         title: "Paradise Tanager",
         category: "ILLUSTRATION",
-        file: "paradise-tanager.jpg",
+        file: "paradise-tanager_jyxzvh.jpg",
         desc: "Avian vector art celebrating natural forms and geometric abstraction."
     },
     {
         id: "19",
-        title: "Pizza Studies",
+        title: "Pizza Studies: Salad",
         category: "ILLUSTRATION DESIGN",
-        file: "salad-za.webp",
+        file: "salad-za_vp1oij.webp",
         desc: "Food illustration series exploring stylized textures and appetite appeal."
     },
     {
         id: "20",
         title: "Start Today",
         category: "MOTION DESIGN",
-        file: "start-today.gif",
+        file: "start-today_ars6dh.gif",
         desc: "Kinetic poster design with bold typography. Motivational branding piece."
     },
     {
         id: "21",
         title: "Synchro",
         category: "DESIGN",
-        file: "synchro-noedit.jpg",
+        file: "synchro_dicpkh.jpg",
         desc: "Event poster design and layout. Focus on symmetry and balance."
     },
     {
         id: "22",
         title: "Water",
         category: "MOTION ART",
-        file: "water.gif",
+        file: "water_ywwq6p.gif",
         desc: "Fluid simulation loop exploring liquid physics and blue aesthetics."
     },
     {
         id: "23",
         title: "Balance",
         category: "MOTION ART",
-        file: "yin-yang.gif",
+        file: "yin-yang_eitv9v.gif",
         desc: "Animated duality concept with geometric motion and traditional symbolism."
     },
     {
         id: "24",
         title: "Zuu",
         category: "ILLUSTRATION",
-        file: "zuu.jpg",
+        file: "zuu_jctede.jpg",
         desc: "Canine portraiture with expressive brushwork and deep color tones."
+    },
+    
+    // --- NEWLY ADDED FROM SCREENSHOT ---
+    {
+        id: "25",
+        title: "Be Not Afraid",
+        category: "ILLUSTRATION",
+        file: "be-not-afraid_001_qvrkco.jpg",
+        desc: "Surrealist composition inspired by biblical angel descriptions."
+    },
+    {
+        id: "26",
+        title: "Bill Murray",
+        category: "ILLUSTRATION",
+        file: "bill-murray1_x7cfop.webp",
+        desc: "Stylized portrait of the cultural icon."
+    },
+    {
+        id: "27",
+        title: "Collab Mural",
+        category: "DESIGN ART",
+        file: "collab-mural_kl2if8.jpg",
+        desc: "Collaborative wall art piece exploring community themes."
+    },
+    {
+        id: "28",
+        title: "Create Better",
+        category: "DESIGN",
+        file: "create-better_cpb6na.jpg",
+        desc: "Motivational typography and graphic design experiment."
+    },
+    {
+        id: "29",
+        title: "Danger Matches",
+        category: "ILLUSTRATION",
+        file: "danger-matches_kcohfs.jpg",
+        desc: "Vintage packaging inspired illustration."
+    },
+    {
+        id: "30",
+        title: "Die of Cancer",
+        category: "MOTION ART",
+        file: "die-of-cancer_sto8c5.gif",
+        desc: "Animated commentary on vice and mortality."
+    },
+    {
+        id: "31",
+        title: "Don't Think",
+        category: "ILLUSTRATION",
+        file: "dont-think-too-much_kpmset.webp",
+        desc: "Mental health awareness graphic with vibrant textures."
+    },
+    {
+        id: "32",
+        title: "Dynoflower",
+        category: "ILLUSTRATION",
+        file: "dynoflower_001_kwreot.jpg",
+        desc: "Organic shapes meeting explosive color palettes."
+    },
+    {
+        id: "33",
+        title: "Grandpa's 80th",
+        category: "DESIGN",
+        file: "grandpas-80_x615wy.jpg",
+        desc: "Commemorative design piece with retro styling."
+    },
+    {
+        id: "34",
+        title: "Gump Series: Left",
+        category: "ILLUSTRATION",
+        file: "gump-left_bf71xq.webp",
+        desc: "Character study from the Gump Series."
+    },
+    {
+        id: "35",
+        title: "Gump Series: Nam",
+        category: "ILLUSTRATION",
+        file: "gump-nam_w2dggg.webp",
+        desc: "Landscape study from the Gump Series."
+    },
+    {
+        id: "36",
+        title: "Gus Fring",
+        category: "ILLUSTRATION",
+        file: "gus-fring-2_sebw8v.jpg",
+        desc: "Portrait of the calculating antagonist."
+    },
+    {
+        id: "37",
+        title: "If You Knew Better",
+        category: "ILLUSTRATION",
+        file: "if-you-knew-better-2_ret02p.jpg",
+        desc: "Abstract geometric composition."
+    },
+    {
+        id: "38",
+        title: "Abstract 0039",
+        category: "ART",
+        file: "IMG_0039_ro7pll.png",
+        desc: "Digital abstract art experiment."
+    },
+    {
+        id: "39",
+        title: "In My Head",
+        category: "ILLUSTRATION ART",
+        file: "in-my-head_yvyfjz.webp",
+        desc: "Psychological landscape visualization."
+    },
+    {
+        id: "40",
+        title: "Inside The Beast",
+        category: "ILLUSTRATION",
+        file: "inside-the-beast_cvbfyx.webp",
+        desc: "Interior biological landscape study."
+    },
+    {
+        id: "41",
+        title: "Kramer",
+        category: "ILLUSTRATION",
+        file: "kramer-smoking_001_pwe1eo.jpg",
+        desc: "The neighbor. A portrait study."
+    },
+    {
+        id: "42",
+        title: "Made Man",
+        category: "DESIGN",
+        file: "made-man_rzsiyu.webp",
+        desc: "Logo and identity concept."
+    },
+    {
+        id: "43",
+        title: "Marc (Alt)",
+        category: "ILLUSTRATION",
+        file: "marc_kxqpvt.jpg",
+        desc: "Alternative composition for the Marc series."
+    },
+    {
+        id: "44",
+        title: "Millertov",
+        category: "ART",
+        file: "millertov_001_bblfvk.jpg",
+        desc: "Mixed media digital composition."
+    },
+    {
+        id: "45",
+        title: "No Dawg",
+        category: "ILLUSTRATION",
+        file: "no-dawg_rotr07.jpg",
+        desc: "Tattoo style illustration design."
+    },
+    {
+        id: "46",
+        title: "No Dawg (Logan)",
+        category: "ILLUSTRATION",
+        file: "no-dawg-logan-noedit_jj7x8d.jpg",
+        desc: "Variant character design."
+    },
+    {
+        id: "47",
+        title: "Open Roads",
+        category: "DESIGN",
+        file: "open-roads_bqhh76.webp",
+        desc: "Badge and emblem design."
+    },
+    {
+        id: "48",
+        title: "Remy Shiftin",
+        category: "ILLUSTRATION",
+        file: "REMY-SHIFTIN_001_gsh02p.jpg",
+        desc: "Dynamic character pose study."
+    },
+    {
+        id: "49",
+        title: "Remy Sunset",
+        category: "ILLUSTRATION",
+        file: "remy-sunset_001_qlyhz3.jpg",
+        desc: "Atmospheric color study."
+    },
+    {
+        id: "50",
+        title: "Smile Loop",
+        category: "MOTION",
+        file: "smile-gif_gwnwau.gif",
+        desc: "Alternative glitch motion loop."
+    },
+    {
+        id: "51",
+        title: "Smile Shop BG",
+        category: "DESIGN",
+        file: "smileshop-bg_a3xalw.jpg",
+        desc: "Background texture and pattern design."
+    },
+    {
+        id: "52",
+        title: "Smirnoff Alexei",
+        category: "ILLUSTRATION",
+        file: "smirnoff-alexei1_w1gviu.jpg",
+        desc: "Character design based on Stranger Things."
+    },
+    {
+        id: "53",
+        title: "Spiral Snake",
+        category: "ART",
+        file: "Spiral-snake_rlholr.jpg",
+        desc: "Geometric pattern and form study."
+    },
+    {
+        id: "54",
+        title: "TK-35",
+        category: "ART",
+        file: "tk-35_004_jddfss.jpg",
+        desc: "Dark art composition."
+    },
+    {
+        id: "55",
+        title: "Veggie Za",
+        category: "ILLUSTRATION",
+        file: "veggie-za_pwtd1n.webp",
+        desc: "Vegetarian variant from the Pizza Studies series."
+    },
+    {
+        id: "56",
+        title: "Whadupa",
+        category: "ART",
+        file: "whadupa_001_s0q0ky.jpg",
+        desc: "Abstract digital graffiti."
+    },
+    {
+        id: "57",
+        title: "Who Know",
+        category: "MOTION ART",
+        file: "who-know_zyfkld.gif",
+        desc: "Psychedelic motion loop."
     }
 ];
 
@@ -216,7 +463,8 @@ document.addEventListener('DOMContentLoaded', () => {
         projectGrid.innerHTML = '';
 
         PROJECTS.forEach(project => {
-            const fullSrc = `${ASSET_BASE_URL}${project.file}`;
+            // Use the new Cloudinary helper function
+            const fullSrc = getAssetUrl(project.file);
             const isVid = isVideoFile(project.file);
 
             // Create Card Element
