@@ -280,10 +280,17 @@
     </footer>
 
     <!-- Project Modal (Hidden by default) -->
-    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8 lg:p-12 pt-24 md:pt-24 hidden overflow-y-auto custom-scrollbar md:overflow-hidden">
+    <!-- 
+      UPDATED: 
+      - items-start (instead of items-center) for correct top scrolling on mobile with padding.
+      - md:items-center for centered desktop view.
+      - h-auto (instead of h-full) so it grows on mobile.
+      - md:overflow-hidden (instead of overflow-hidden) to allow page scrolling on mobile.
+    -->
+    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-start md:items-center justify-center p-0 md:p-8 lg:p-12 pt-24 md:pt-24 hidden overflow-y-auto custom-scrollbar md:overflow-hidden">
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
         
-        <div class="relative z-10 w-full max-w-7xl h-full md:h-auto md:max-h-[90vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 overflow-hidden">
+        <div class="relative z-10 w-full max-w-7xl h-auto md:h-auto md:max-h-[90vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 md:overflow-hidden">
             
             <!-- Image Side -->
             <div class="relative w-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 md:overflow-y-auto custom-scrollbar group">
