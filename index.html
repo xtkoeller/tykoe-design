@@ -78,7 +78,7 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-[120] font-mono py-3 border-b border-tykoe-gold bg-gradient-to-br from-[#250808] to-[#401212]">
-        <div class="container mx-auto max-w-[80%] px-6 flex justify-between items-center relative min-h-[40px]">
+        <div class="container mx-auto w-full md:max-w-[80%] px-6 flex justify-between items-center relative min-h-[40px]">
             
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="md:hidden z-20 text-tykoe-periwinkle hover:text-white transition-colors">
@@ -135,8 +135,8 @@
     </div>
 
     <!-- Main Content -->
-    <!-- Reduced width to max-w-[80%] -->
-    <main class="flex-grow pt-32 pb-12 px-6 container mx-auto max-w-[80%] z-10">
+    <!-- Reduced width to max-w-[80%] on MD+, w-full on Mobile -->
+    <main class="flex-grow pt-32 pb-12 px-6 container mx-auto w-full md:max-w-[80%] z-10">
         
         <!-- Hero Header -->
         <div class="flex flex-col items-start gap-4 mb-8">
@@ -196,7 +196,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-red-900/20 bg-nebula-dark py-12 px-6 font-mono text-xs uppercase tracking-widest relative z-20">
-        <div class="container mx-auto max-w-[80%] flex flex-col md:flex-row justify-between items-center text-gray-600">
+        <div class="container mx-auto w-full md:max-w-[80%] flex flex-col md:flex-row justify-between items-center text-gray-600">
           <div class="flex items-center gap-4 mb-4 md:mb-0">
               <a href="index.html" class="hover:text-tykoe-gold transition-colors">TYKOE.COM</a>
               <span class="text-tykoe-periwinkle/30">//</span>
@@ -215,7 +215,8 @@
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
         
         <!-- Fixed Close Button Top Right -->
-        <button id="close-modal" class="fixed top-6 right-6 z-[140] text-tykoe-crimson hover:text-white transition-colors p-4 bg-black/50 rounded-full md:bg-transparent">
+        <!-- Updated to top-24 on mobile to clear nav bar, top-6 on desktop -->
+        <button id="close-modal" class="fixed top-24 right-4 md:top-6 md:right-6 z-[140] text-tykoe-crimson hover:text-white transition-colors p-4 bg-black/50 rounded-full md:bg-transparent">
             <i data-lucide="x" width="32" height="32"></i>
         </button>
 
