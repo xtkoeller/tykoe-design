@@ -155,108 +155,376 @@
         <div id="category-filters" class="mb-12 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-sm uppercase tracking-widest text-gray-500">
             <button class="filter-btn text-tykoe-gold font-bold border-b border-tykoe-gold scale-105 transition-all" data-category="ALL">ALL</button>
             <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="Photography">Photography</button>
+            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="MOTION">MOTION</button>
             <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="3D Design">3D Design</button>
+            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="ILLUSTRATION">ILLUSTRATION</button>
             <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="Web Design">Web Design</button>
+            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="DESIGN">DESIGN</button>
             <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="Film">Film</button>
+            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="BRANDING">BRANDING</button>
             <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="Branding">Branding</button>
-            <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="Art Direction">Art Direction</button>
+            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="ART">ART</button>
         </div>
 
         <!-- Project Grid -->
         <div id="project-grid" class="columns-2 md:columns-2 lg:columns-3 gap-2 md:gap-4 space-y-2 md:space-y-4">
             
-            <!-- Project 1 (No Link) -->
+            <!-- Project 1: Almonds (Motion) -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="1" data-title="Neon Horizons" data-category="Photography" data-img="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
-                 data-desc="A study of light and shadow in urban environments, captured in motion.">
+                 data-id="1" data-title="Almonds" data-category="MOTION ART" data-img="assets/almonds.mp4"
+                 data-desc="Cinematic sequence exploring organic forms and fluid motion.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
-                    <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <video src="assets/almonds.mp4" autoplay loop muted playsinline class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105"></video>
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
                         <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
-                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Neon Horizons</h3>
-                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// Photography</p>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Almonds</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// MOTION</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 2 (With Link) -->
+            <!-- Project: Abyss Between (Art) -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="2" data-title="Abstract Form" data-category="3D Design" data-img="https://picsum.photos/600/800?random=2" data-link="https://example.com/project2"
-                 data-desc="Procedural generation experiments using Blender and Python.">
+                 data-id="2" data-title="The Abyss Between" data-category="ART 3D" data-img="assets/abyss-between.webp"
+                 data-desc="Visualizing the space between thoughts in a digital void.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
-                    <img src="https://picsum.photos/600/800?random=2" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <img src="assets/abyss-between.webp" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
                         <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
-                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Abstract Form</h3>
-                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// 3D Design</p>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Abyss Between</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ART</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 3 -->
+            <!-- Project: Baby Hairs (Illustration) -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="3" data-title="Minimalist UI" data-category="Web Design" data-img="https://picsum.photos/800/800?random=3" data-link="https://example.com/project3"
-                 data-desc="A clean, typography-focused interface for a fintech startup.">
+                 data-id="3" data-title="Baby Hairs" data-category="ILLUSTRATION" data-img="assets/baby-hairs.jpg"
+                 data-desc="Stylized portraiture emphasizing texture and vibrant palettes.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
-                    <img src="https://picsum.photos/800/800?random=3" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <img src="assets/baby-hairs.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
                         <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
-                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Minimalist UI</h3>
-                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// Web Design</p>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Baby Hairs</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 4 -->
-            <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="4" data-title="Analog Memories" data-category="Film" data-img="https://picsum.photos/700/500?random=4" data-link="https://example.com/project4"
-                 data-desc="35mm film photography from a summer in Tokyo.">
-                <div class="relative overflow-hidden bg-nebula-maroon/40">
-                    <img src="https://picsum.photos/700/500?random=4" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
-                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
-                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
-                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Analog Memories</h3>
-                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// Film</p>
-                    </div>
-                </div>
-            </div>
-
-             <!-- Project 5 -->
+             <!-- Project: Smile Portal (Motion) -->
              <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="5" data-title="Echoes" data-category="Branding" data-img="https://picsum.photos/600/600?random=5" data-link="https://example.com/project5"
-                 data-desc="Identity design for a modern music festival.">
+                 data-id="4" data-title="Smile Portal" data-category="MOTION BRANDING" data-img="assets/smile-portal.gif"
+                 data-desc="Animated brand portal for the Smile Shop identity system.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
-                    <img src="https://picsum.photos/600/600?random=5" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <img src="assets/smile-portal.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
                         <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
-                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Echoes</h3>
-                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// Branding</p>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Smile Portal</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// MOTION</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 6 -->
+            <!-- Project: Carlin (Illustration) -->
             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
-                 data-id="6" data-title="Void" data-category="Art Direction" data-img="https://picsum.photos/500/700?random=6" data-link="https://example.com/project6"
-                 data-desc="Editorial layout and concept for Void Magazine.">
+                 data-id="5" data-title="Carlin" data-category="ILLUSTRATION" data-img="assets/carlin.jpg"
+                 data-desc="Digital tribute to the legend of stand-up comedy.">
                 <div class="relative overflow-hidden bg-nebula-maroon/40">
-                    <img src="https://picsum.photos/500/700?random=6" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <img src="assets/carlin.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
                         <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
-                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Void</h3>
-                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// Art Direction</p>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Carlin</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Cosmonaut (Art) -->
+            <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="6" data-title="Cosmonaut" data-category="ART ILLUSTRATION" data-img="assets/cosmonaut.jpg"
+                 data-desc="Lost in the digital void. A study of isolation in space.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/cosmonaut.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Cosmonaut</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ART</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Dayton Mobile DJ (Motion) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="7" data-title="Dayton Mobile DJ" data-category="MOTION BRANDING" data-img="assets/dayton-mobile-dj.gif"
+                 data-desc="Kinetic logo animation for an audio events company.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/dayton-mobile-dj.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Dayton DJ</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// BRANDING</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Eklund Aviation (Branding) -->
+            <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="8" data-title="Eklund Aviation" data-category="BRANDING DESIGN" data-img="assets/eklund-aviation.png"
+                 data-desc="Corporate identity design focusing on classic flight aesthetics.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/eklund-aviation.png" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Eklund Aviation</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// BRANDING</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Gump Series (Illustration) -->
+            <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="9" data-title="Gump Series" data-category="ILLUSTRATION" data-img="assets/gump-boat.webp"
+                 data-desc="Conceptual art series based on key scenes from Forrest Gump.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/gump-boat.webp" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Gump Series</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Manual Override (Motion) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="10" data-title="Manual Override" data-category="MOTION ART" data-img="assets/IMG_4106.gif"
+                 data-desc="Skeletal motion study examining biological mechanics.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/IMG_4106.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Manual Override</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// MOTION</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Haus (Design) -->
+            <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="11" data-title="Haus" data-category="DESIGN" data-img="assets/haus.webp"
+                 data-desc="Architectural poster design and typography layout.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/haus.webp" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Haus</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// DESIGN</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: In Da Matrix (Illustration) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="12" data-title="In Da Matrix" data-category="ILLUSTRATION ART" data-img="assets/in-da-matrix.webp"
+                 data-desc="Cyberpunk character design inspired by digital simulations.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/in-da-matrix.webp" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">In Da Matrix</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: I'm Clear (Illustration) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="13" data-title="I'm Clear" data-category="ILLUSTRATION ART" data-img="assets/im-clear-1080.webp"
+                 data-desc="Skull motif composition with vibrant gradients.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/im-clear-1080.webp" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">I'm Clear</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ART</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Loch Doubt (Motion) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="14" data-title="Loch Doubt" data-category="MOTION DESIGN" data-img="assets/loch-doubt-title_001.gif"
+                 data-desc="Title sequence animation for film project.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/loch-doubt-title_001.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Loch Doubt</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// MOTION</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Marc iTunes (Design) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="15" data-title="Marc" data-category="DESIGN BRANDING" data-img="assets/marc-itunes.jpg"
+                 data-desc="Podcast cover art and layout design.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/marc-itunes.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Marc</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// DESIGN</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Miami Display (Design) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="16" data-title="Miami Display" data-category="DESIGN BRANDING" data-img="assets/miami-display-noedit.jpg"
+                 data-desc="Physical installation mockup for retail display.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/miami-display-noedit.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Miami Display</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// DESIGN</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Nemesis (Illustration) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="17" data-title="Nemesis" data-category="ILLUSTRATION ART" data-img="assets/nemesis.jpg"
+                 data-desc="Expressive character illustration with glitch elements.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/nemesis.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Nemesis</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Paradise Tanager (Illustration) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="18" data-title="Paradise Tanager" data-category="ILLUSTRATION" data-img="assets/paradise-tanager.jpg"
+                 data-desc="Avian vector art celebrating natural forms.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/paradise-tanager.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Paradise Tanager</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Pizza Series (Illustration) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="19" data-title="Pizza Studies" data-category="ILLUSTRATION DESIGN" data-img="assets/salad-za.webp"
+                 data-desc="Food illustration series exploring stylized textures.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/salad-za.webp" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Pizza Studies</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Start Today (Motion) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="20" data-title="Start Today" data-category="MOTION DESIGN" data-img="assets/start-today.gif"
+                 data-desc="Kinetic poster design with bold typography.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/start-today.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Start Today</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// MOTION</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Synchro (Design) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="21" data-title="Synchro" data-category="DESIGN" data-img="assets/synchro-noedit.jpg"
+                 data-desc="Event poster design and layout.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/synchro-noedit.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Synchro</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// DESIGN</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Water (Motion) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="22" data-title="Water" data-category="MOTION ART" data-img="assets/water.gif"
+                 data-desc="Fluid simulation loop exploring liquid physics.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/water.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Water</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// MOTION</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Yin Yang (Motion) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="23" data-title="Balance" data-category="MOTION ART" data-img="assets/yin-yang.gif"
+                 data-desc="Animated duality concept with geometric motion.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/yin-yang.gif" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Balance</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// MOTION</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project: Zuu (Illustration) -->
+             <div class="project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer" 
+                 data-id="24" data-title="Zuu" data-category="ILLUSTRATION" data-img="assets/zuu.jpg"
+                 data-desc="Canine portraiture with expressive brushwork.">
+                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                    <img src="assets/zuu.jpg" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
+                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
+                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">Zuu</h3>
+                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ILLUSTRATION</p>
                     </div>
                 </div>
             </div>
@@ -280,13 +548,6 @@
     </footer>
 
     <!-- Project Modal (Hidden by default) -->
-    <!-- 
-      UPDATED: 
-      - items-start (instead of items-center) for correct top scrolling on mobile with padding.
-      - md:items-center for centered desktop view.
-      - h-auto (instead of h-full) so it grows on mobile.
-      - md:overflow-hidden (instead of overflow-hidden) to allow page scrolling on mobile.
-    -->
     <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-start md:items-center justify-center p-0 md:p-8 lg:p-12 pt-24 md:pt-24 hidden overflow-y-auto custom-scrollbar md:overflow-hidden">
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
         
@@ -296,9 +557,10 @@
             <div class="relative w-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 md:overflow-y-auto custom-scrollbar group">
                 <!-- 
                    Image: w-full h-auto (natural height).
-                   Sticky bottom controls.
                 -->
                 <img id="modal-img" src="" class="w-full h-auto block opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                <!-- Video Element (Hidden by default, toggled via JS) -->
+                <video id="modal-video" src="" class="w-full h-auto hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
                 
                 <!-- Controls Bar Overlay (Sticky at Bottom) -->
                 <div class="sticky bottom-0 left-0 w-full p-4 md:p-6 flex justify-between items-end bg-gradient-to-t from-black via-black/90 to-transparent z-20">
