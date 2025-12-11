@@ -4,9 +4,6 @@
 
 // Your Cloudinary Configuration
 const CLOUD_NAME = "dydqxus0f";
-
-// ⚠️ IMPORTANT: Based on your settings screenshot, "Prepend a path" is OFF.
-// This means we should NOT include the folder name in the URL generation.
 const CLOUD_FOLDER = ""; 
 
 // Helper to generate the correct Cloudinary URL based on file type
@@ -21,6 +18,11 @@ const getAssetUrl = (filename) => {
     const folderPath = CLOUD_FOLDER ? `${CLOUD_FOLDER}/` : '';
 
     return `https://res.cloudinary.com/${CLOUD_NAME}/${resourceType}/upload/${params}/${folderPath}${filename}`;
+};
+
+// Helper to create URL slugs from titles (e.g., "Baby Hairs" -> "baby-hairs")
+const createSlug = (title) => {
+    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 };
 
 // ==========================================
@@ -133,7 +135,6 @@ const PROJECTS = [
         file: "marc-itunes_w6bkyn.jpg",
         desc: "Podcast cover art and layout design. Bold colors for high visibility."
     },
-    // Removed Miami Display as it was missing from the new upload batch
     {
         id: "17",
         title: "Nemesis",
@@ -190,7 +191,6 @@ const PROJECTS = [
         file: "zuu_jctede.jpg",
         desc: "Canine portraiture with expressive brushwork and deep color tones."
     },
-    
     // --- NEWLY ADDED FROM SCREENSHOT ---
     {
         id: "25",
@@ -455,83 +455,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Render Projects ---
     const projectGrid = document.getElementById('project-grid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    // Function to handle filtering logic
+    const filterProjects = (category) => {
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        // Update UI buttons
+        filterButtons.forEach(b => {
+            const btnCat = b.getAttribute('data-category');
+            if (btnCat.toLowerCase() === category.toLowerCase() || (category === 'ALL' && btnCat === 'ALL')) {
+                b.classList.add('text-tykoe-gold', 'font-bold', 'border-b', 'border-tykoe-gold', 'scale-105');
+                b.classList.remove('hover:text-tykoe-periwinkle');
+            } else {
+                b.classList.remove('text-tykoe-gold', 'font-bold', 'border-b', 'border-tykoe-gold', 'scale-105');
+                b.classList.add('hover:text-tykoe-periwinkle');
+            }
+        });
+
+        // Filter Grid
+        projectCards.forEach(card => {
+            const cardCategories = card.getAttribute('data-category').split(' ');
+            if(category === 'ALL' || cardCategories.some(c => c.toLowerCase() === category.toLowerCase())) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    };
 
     if (projectGrid) {
         // Clear loading state
         projectGrid.innerHTML = '';
 
         PROJECTS.forEach(project => {
-            // Use the new Cloudinary helper function
             const fullSrc = getAssetUrl(project.file);
             const isVid = isVideoFile(project.file);
+            const slug = createSlug(project.title);
 
             // Create Card Element
             const card = document.createElement('div');
-            card.className = "project-card group relative mb-2 md:mb-4 break-inside-avoid cursor-pointer";
+            card.className = "project-card group relative mb-4 break-inside-avoid cursor-pointer";
             card.setAttribute('data-id', project.id);
+            card.setAttribute('data-slug', slug);
             card.setAttribute('data-title', project.title);
             card.setAttribute('data-category', project.category);
-            card.setAttribute('data-img', fullSrc); // Store full path
+            card.setAttribute('data-img', fullSrc);
             card.setAttribute('data-desc', project.desc);
             if(project.link) card.setAttribute('data-link', project.link);
 
-            // Inner HTML Template with Error Logging
             let mediaHTML = '';
-            // Added onerror to help debug 404s
-            const onErrorHandler = `this.style.display='none'; this.parentElement.innerHTML='<div class="p-4 text-xs font-mono text-red-500 border border-red-500/30 bg-red-900/10">IMG_ERR: 404</div>'; console.error('Cloudinary 404: failed to load ' + this.src);`;
-            
+            // Removed onerror logic as requested
             if (isVid) {
-                // For grid videos, we auto-play muted
-                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline onerror="${onErrorHandler}" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105"></video>`;
+                // Remove h-auto constraint so it flows naturally in columns
+                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="w-full object-contain filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105"></video>`;
             } else {
-                mediaHTML = `<img src="${fullSrc}" loading="lazy" onerror="${onErrorHandler}" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">`;
+                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="w-full object-contain filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">`;
             }
 
-            const mainCategory = project.category.split(' ')[0]; // Take first cat for tag
+            const mainCategory = project.category.split(' ')[0];
 
+            // Removed min-h-[200px] to allow natural height (full visibility)
             card.innerHTML = `
-                <div class="relative overflow-hidden bg-nebula-maroon/40 min-h-[200px]">
+                <div class="relative overflow-hidden bg-nebula-maroon/20">
                     ${mediaHTML}
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
-                    <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
-                        <div class="w-full h-[2px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2 opacity-50 group-hover:opacity-100"></div>
-                        <h3 class="text-sm md:text-2xl font-consolas font-bold text-white group-hover:text-tykoe-gold">${project.title}</h3>
-                        <p class="text-[10px] md:text-xs font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ${mainCategory}</p>
+                    <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-full h-[1px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2"></div>
+                        <h3 class="text-xs md:text-sm font-consolas font-bold text-white group-hover:text-tykoe-gold">${project.title}</h3>
+                        <p class="text-[9px] font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ${mainCategory}</p>
                     </div>
                 </div>
             `;
 
             projectGrid.appendChild(card);
         });
-    }
 
-    // --- Project Filtering Logic (Event Delegation) ---
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    // Re-select cards now that they exist
-    const projectCards = document.querySelectorAll('.project-card');
-
-    if(filterButtons.length > 0) {
+        // Filter click events -> Update Hash
         filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update active state of buttons
-                filterButtons.forEach(b => {
-                    b.classList.remove('text-tykoe-gold', 'font-bold', 'border-b', 'border-tykoe-gold', 'scale-105');
-                    b.classList.add('hover:text-tykoe-periwinkle');
-                });
-                btn.classList.add('text-tykoe-gold', 'font-bold', 'border-b', 'border-tykoe-gold', 'scale-105');
-                btn.classList.remove('hover:text-tykoe-periwinkle');
-
                 const category = btn.getAttribute('data-category');
-
-                projectCards.forEach(card => {
-                    const cardCategories = card.getAttribute('data-category').split(' ');
-                    // If category is ALL, or if the card's category list includes the selected category
-                    if(category === 'ALL' || cardCategories.includes(category)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                if (category === 'ALL') {
+                    history.pushState(null, null, ' '); // Clear hash
+                    filterProjects('ALL');
+                } else {
+                    window.location.hash = category.toLowerCase();
+                }
             });
         });
     }
@@ -550,13 +559,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalLinkBtn = document.getElementById('modal-link-btn');
 
     function openModal(card) {
+        // Update URL state
+        const slug = card.getAttribute('data-slug');
+        history.pushState(null, null, `#?${slug}`);
+
         // Populate Data
         modalTitle.textContent = card.getAttribute('data-title');
-        
         const src = card.getAttribute('data-img');
         
         if (isVideoFile(src)) {
-            // Show Video, Hide Image
             modalVideo.src = src;
             modalVideo.classList.remove('hidden');
             modalVideo.classList.add('block');
@@ -564,7 +575,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImg.classList.remove('block');
             modalVideo.play();
         } else {
-            // Show Image, Hide Video
             modalImg.src = src;
             modalImg.classList.remove('hidden');
             modalImg.classList.add('block');
@@ -577,7 +587,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modalCat.textContent = card.getAttribute('data-category');
         modalId.textContent = card.getAttribute('data-id');
 
-        // Link Logic
+        // External Link Logic (Commented Out per request)
+        /*
         const link = card.getAttribute('data-link');
         if(link && modalLinkBtn) {
             modalLinkBtn.href = link;
@@ -588,6 +599,9 @@ document.addEventListener('DOMContentLoaded', () => {
             modalLinkBtn.classList.add('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
             modalLinkBtn.querySelector('span').textContent = 'INTERNAL ARCHIVE ONLY';
         }
+        */
+       // Hide link button completely for now
+       if(modalLinkBtn) modalLinkBtn.parentElement.style.display = 'none';
 
         // Show Modal
         modalBackdrop.classList.remove('hidden');
@@ -595,37 +609,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeModal() {
+        // Revert URL to category or clean
+        const currentHash = window.location.hash;
+        if (currentHash.includes('?')) {
+            // If we are in project view, go back to just root or check if there was a filter
+            // For simplicity, we just go back to history state or clean url
+            history.pushState(null, null, ' '); 
+        }
+
         modalBackdrop.classList.add('hidden');
         document.body.style.overflow = ''; // Unlock Scroll
         if(modalVideo) modalVideo.pause();
     }
 
     if(modalBackdrop) {
-        // Open on Card Click (Delegation for dynamically created cards)
-        projectGrid.addEventListener('click', (e) => {
-            const card = e.target.closest('.project-card');
-            if(card) {
-                openModal(card);
-            }
-        });
+        // Open on Card Click (Delegation)
+        if(projectGrid) {
+            projectGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.project-card');
+                if(card) {
+                    openModal(card);
+                }
+            });
+        }
 
-        // Close on X Click
         if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
         
-        // Close on Backdrop Click
         modalBackdrop.addEventListener('click', (e) => {
-            // Check if clicking backdrop or the blur layer
             if(e.target === modalBackdrop || (e.target.classList.contains('absolute') && e.target.classList.contains('inset-0'))) {
                 closeModal();
             }
         });
 
-        // Close on Escape Key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
                 closeModal();
             }
         });
+    }
+
+    // --- Router / Hash Handler ---
+    const handleHashChange = () => {
+        const hash = window.location.hash;
+        
+        if (!hash) return;
+
+        if (hash.startsWith('#?')) {
+            // Project View: #?baby-hairs
+            const slug = hash.substring(2);
+            // Wait for grid to render if necessary (simple check)
+            const card = document.querySelector(`.project-card[data-slug="${slug}"]`);
+            if (card) {
+                openModal(card);
+            }
+        } else {
+            // Category View: #illustration
+            const category = hash.substring(1).toUpperCase();
+            // Validate category exists in filters
+            const validFilter = Array.from(filterButtons).some(b => b.getAttribute('data-category').toUpperCase() === category);
+            if (validFilter || category === 'ALL') {
+                filterProjects(category);
+            }
+        }
+    };
+
+    // Initialize Router
+    window.addEventListener('hashchange', handleHashChange);
+    // Trigger on load if hash exists
+    if(window.location.hash) {
+        // slight delay to ensure DOM is ready
+        setTimeout(handleHashChange, 100);
     }
 
 });
