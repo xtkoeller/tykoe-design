@@ -59,7 +59,7 @@
 <body class="bg-nebula-dark text-white antialiased selection:bg-tykoe-periwinkle selection:text-nebula-dark bg-maroon-gradient min-h-screen flex flex-col">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-[120] font-mono py-5 border-b border-tykoe-gold bg-gradient-to-br from-[#250808] to-[#401212]">
+    <nav class="fixed top-0 w-full z-[120] font-mono py-3 border-b border-tykoe-gold bg-gradient-to-br from-[#250808] to-[#401212]">
         <div class="container mx-auto max-w-[80%] px-6 flex justify-between items-center relative min-h-[40px]">
             
             <!-- Mobile Menu Button -->
@@ -192,8 +192,8 @@
     </footer>
 
     <!-- Project Modal (Hidden by default) -->
-    <!-- Padding adjusted -->
-    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8 lg:p-12 hidden overflow-y-auto custom-scrollbar md:overflow-hidden">
+    <!-- Added pt-20/24 to separate from nav, pb-4 for bottom gap, and removed overflow-auto from backdrop to prevent double scrolling unless necessary. -->
+    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center pt-20 px-4 pb-4 md:pt-24 md:px-12 hidden">
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
         
         <!-- Fixed Close Button Top Right -->
@@ -201,15 +201,17 @@
             <i data-lucide="x" width="32" height="32"></i>
         </button>
 
-        <div class="relative z-10 w-full max-w-7xl h-full md:h-[90vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 md:overflow-hidden">
+        <!-- Modal Content Box: Fixed height to fit in viewport with top padding -->
+        <div class="relative z-10 w-full max-w-7xl h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 md:overflow-hidden">
             
             <!-- Image Side -->
-            <div class="relative w-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 overflow-auto custom-scrollbar group">
+            <!-- Changed to flex center to handle object-contain scaling -->
+            <div class="relative w-full h-[50%] md:h-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 flex items-center justify-center overflow-hidden group">
                 <!-- 
-                   Image: Auto width/height allows pan if larger than container
+                   Image: Max width/height 100% + object-contain ensuring full visibility
                 -->
-                <img id="modal-img" src="" class="block opacity-90 group-hover:opacity-100 transition-opacity duration-500 mx-auto">
-                <video id="modal-video" src="" class="w-full h-auto hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
+                <img id="modal-img" src="" class="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                <video id="modal-video" src="" class="max-w-full max-h-full object-contain hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
                 
                 <div class="absolute bottom-4 left-4 text-tykoe-gold font-mono text-[10px] tracking-widest hidden md:block bg-black/50 px-2 py-1">
                     IMG_SRC: RAW_DATA
@@ -217,7 +219,7 @@
             </div>
 
             <!-- Content Side -->
-            <div class="w-full md:w-[35%] flex flex-col h-auto md:h-full md:overflow-y-auto custom-scrollbar bg-[#050101]">
+            <div class="w-full h-[50%] md:h-full md:w-[35%] flex flex-col md:overflow-y-auto custom-scrollbar bg-[#050101]">
                 <div class="p-6 md:p-10 border-b border-white/5 pb-6 relative shrink-0">
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-tykoe-gold to-tykoe-periwinkle opacity-50"></div>
                     <div class="flex items-center gap-2 text-tykoe-periwinkle mb-2 text-xs font-mono uppercase tracking-widest">
@@ -228,7 +230,7 @@
                         <span id="modal-cat" class="inline-flex items-center gap-1 px-3 py-1 bg-tykoe-gold/10 border border-tykoe-gold/30 text-tykoe-gold text-[10px] md:text-xs uppercase tracking-wider font-bold shadow-sm"></span>
                     </div>
                 </div>
-                <div class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6">
+                <div class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6 overflow-y-auto md:overflow-visible">
                     <p id="modal-desc" class="first-letter:text-3xl first-letter:text-tykoe-gold first-letter:font-serif first-letter:mr-2 first-letter:float-left first-letter:leading-none"></p>
                     <p class="opacity-80">Additional project details, methodology, and creative process documentation would render here.</p>
                 </div>
