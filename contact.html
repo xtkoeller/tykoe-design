@@ -43,7 +43,7 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-[120] font-mono py-5 border-b border-tykoe-gold bg-gradient-to-br from-[#250808] to-[#401212]">
-        <div class="container mx-auto px-6 flex justify-between items-center relative min-h-[40px]">
+        <div class="container mx-auto max-w-[80%] px-6 flex justify-between items-center relative min-h-[40px]">
             <button id="mobile-menu-btn" class="md:hidden z-20 text-tykoe-periwinkle hover:text-white transition-colors">
                 <i data-lucide="more-vertical" width="28" height="28"></i>
             </button>
@@ -53,21 +53,21 @@
                     <svg class="absolute top-1/2 -translate-y-1/2 -z-10 pointer-events-none text-tykoe-periwinkle left-1/2 -translate-x-1/2 w-[120%] md:left-0 md:translate-x-[-5%] md:w-[140%]" 
                         viewBox="0 0 520 60" fill="none" preserveAspectRatio="xMidYMid meet"
                         style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
-                        <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <a href="index.html" class="text-2xl md:text-4xl font-garamond font-extrabold italic tracking-[0.4em] text-tykoe-gold hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(255,179,0,0.3)]">TYKOE</a>
+                    <a href="/" class="text-2xl md:text-4xl font-garamond font-extrabold italic tracking-[0.4em] text-tykoe-gold hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(255,179,0,0.3)]">TYKOE</a>
                 </div>
             </div>
             <div class="hidden md:flex space-x-12">
-                <a href="index.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle/60 hover:text-tykoe-periwinkle transition-colors py-2 group">
+                <a href="/" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     Work
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="about.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle/60 hover:text-tykoe-periwinkle transition-colors py-2 group">
+                <a href="about" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     About
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="contact.html" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-gold py-2 group">
+                <a href="contact" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-gold py-2 group">
                     Contact
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-100"></span>
                 </a>
@@ -81,9 +81,9 @@
             <i data-lucide="x" width="32" height="32"></i>
         </button>
         <div class="flex flex-col items-start space-y-12 pl-12 w-full max-w-md mx-auto">
-            <a href="index.html" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Work</a>
-            <a href="about.html" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">About</a>
-            <a href="contact.html" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Contact</a>
+            <a href="/" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Work</a>
+            <a href="about" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">About</a>
+            <a href="contact" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Contact</a>
         </div>
         <div class="absolute bottom-12 w-full text-center text-tykoe-gold font-mono text-xs uppercase tracking-[0.2em] animate-pulse">
             [ SYSTEM ONLINE ]
@@ -91,17 +91,17 @@
     </div>
 
     <!-- Contact Content -->
-    <div class="pt-32 pb-20 px-6 container mx-auto flex-grow flex items-center relative overflow-hidden">
+    <div class="pt-32 pb-20 px-6 container mx-auto max-w-[80%] flex-grow flex items-center relative overflow-hidden">
         <div class="grid lg:grid-cols-2 gap-20 items-center w-full relative z-10">
           <div>
-            <h2 class="text-5xl md:text-7xl font-consolas font-bold mb-8 text-white">
+            <h2 class="text-4xl md:text-6xl font-consolas font-bold mb-8 text-white">
                 INITIATE<br/><span class="text-tykoe-crimson">CONTACT.</span>
             </h2>
-            <p class="text-xl font-mono text-gray-400 mb-12 max-w-md">
+            <p class="text-base font-mono text-gray-400 mb-12 max-w-md">
                 Signal frequency open. Awaiting data transmission for new collaborations and visual assignments.
             </p>
             
-            <a href="mailto:xtkoeller@gmail.com" class="group inline-flex items-center gap-4 text-2xl font-consolas font-bold text-white hover:text-tykoe-crimson transition-all duration-300 border-b border-white/20 pb-2 mb-20">
+            <a href="mailto:xtkoeller@gmail.com" class="group inline-flex items-center gap-4 text-xl md:text-2xl font-consolas font-bold text-white hover:text-tykoe-crimson transition-all duration-300 border-b border-white/20 pb-2 mb-20">
               <i data-lucide="mail" class="group-hover:animate-bounce text-tykoe-crimson"></i> 
               xtkoeller@gmail.com 
               <i data-lucide="arrow-right" class="group-hover:translate-x-2 transition-transform"></i>
@@ -111,12 +111,12 @@
                 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-tykoe-gold">
                     <i data-lucide="star" width="64" height="64"></i>
                 </div>
-                <h3 class="font-serif text-3xl mb-4 italic text-tykoe-gold-pale">"Design is intelligence made visible."</h3>
+                <h3 class="font-serif text-2xl md:text-3xl mb-4 italic text-tykoe-gold-pale">"Design is intelligence made visible."</h3>
                 <p class="text-xs font-mono uppercase tracking-widest text-tykoe-gold">— Alina Wheeler</p>
             </div>
           </div>
     
-          <div class="relative flex justify-center h-[700px] items-center">
+          <div class="relative flex justify-center h-[500px] items-center">
             <!-- Abstract Image -->
             <div class="absolute inset-0 w-full h-full opacity-50 mix-blend-lighten pointer-events-none">
                 <img 
@@ -135,7 +135,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-red-900/20 bg-nebula-dark py-12 px-6 font-mono text-xs uppercase tracking-widest relative z-20">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-gray-600">
+        <div class="container mx-auto max-w-[80%] flex flex-col md:flex-row justify-between items-center text-gray-600">
           <div class="flex items-center gap-4 mb-4 md:mb-0">
               <a href="index.html" class="hover:text-tykoe-gold transition-colors">TYKOE.COM</a>
               <span class="text-tykoe-periwinkle/30">//</span>
