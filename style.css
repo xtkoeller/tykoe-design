@@ -30,3 +30,8 @@ body {
     background-color: #050101;
     color: #e2e2e2;
 }
+
+/* Ensure video behaves like block image in modal */
+#modal-video.block {
+    display: block;
+}
