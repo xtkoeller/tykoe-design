@@ -4,7 +4,10 @@
 
 // Your Cloudinary Configuration
 const CLOUD_NAME = "dydqxus0f";
-const CLOUD_FOLDER = "assets"; // The folder name you created in Cloudinary
+
+// ⚠️ IMPORTANT: set this to the folder name in your Cloudinary Media Library.
+// based on your previous message, "assets" is the correct folder.
+const CLOUD_FOLDER = "assets"; 
 
 // Helper to generate the correct Cloudinary URL based on file type
 const getAssetUrl = (filename) => {
@@ -12,11 +15,12 @@ const getAssetUrl = (filename) => {
     const resourceType = isVideo ? 'video' : 'image';
     
     // Cloudinary Transformations:
-    // q_auto: Automatically adjusts quality/compression
-    // f_auto: Automatically serves the best format (e.g. WebP)
     const params = isVideo ? 'q_auto' : 'f_auto,q_auto';
 
-    return `https://res.cloudinary.com/${CLOUD_NAME}/${resourceType}/upload/${params}/${CLOUD_FOLDER}/${filename}`;
+    // Handle root vs folder path correctly
+    const folderPath = CLOUD_FOLDER ? `${CLOUD_FOLDER}/` : '';
+
+    return `https://res.cloudinary.com/${CLOUD_NAME}/${resourceType}/upload/${params}/${folderPath}${filename}`;
 };
 
 // ==========================================
@@ -129,13 +133,7 @@ const PROJECTS = [
         file: "marc-itunes_w6bkyn.jpg",
         desc: "Podcast cover art and layout design. Bold colors for high visibility."
     },
-    {
-        id: "16",
-        title: "Miami Display",
-        category: "DESIGN BRANDING",
-        file: "miami-display-noedit.jpg", 
-        desc: "Physical installation mockup for retail display. 80s synthwave aesthetic."
-    },
+    // Removed Miami Display as it was missing from the new upload batch
     {
         id: "17",
         title: "Nemesis",
@@ -182,7 +180,7 @@ const PROJECTS = [
         id: "23",
         title: "Balance",
         category: "MOTION ART",
-        file: "yin-yang_eitv9v.gif",
+        file: "yin-yang_eitv9v.jpg",
         desc: "Animated duality concept with geometric motion and traditional symbolism."
     },
     {
@@ -477,19 +475,22 @@ document.addEventListener('DOMContentLoaded', () => {
             card.setAttribute('data-desc', project.desc);
             if(project.link) card.setAttribute('data-link', project.link);
 
-            // Inner HTML Template
+            // Inner HTML Template with Error Logging
             let mediaHTML = '';
+            // Added onerror to help debug 404s
+            const onErrorHandler = `this.style.display='none'; this.parentElement.innerHTML='<div class="p-4 text-xs font-mono text-red-500 border border-red-500/30 bg-red-900/10">IMG_ERR: 404</div>'; console.error('Cloudinary 404: failed to load ' + this.src);`;
+            
             if (isVid) {
                 // For grid videos, we auto-play muted
-                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105"></video>`;
+                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline onerror="${onErrorHandler}" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105"></video>`;
             } else {
-                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">`;
+                mediaHTML = `<img src="${fullSrc}" loading="lazy" onerror="${onErrorHandler}" class="w-full h-auto object-cover filter sepia-[0.2] group-hover:sepia-0 transition-transform duration-700 group-hover:scale-105">`;
             }
 
             const mainCategory = project.category.split(' ')[0]; // Take first cat for tag
 
             card.innerHTML = `
-                <div class="relative overflow-hidden bg-nebula-maroon/40">
+                <div class="relative overflow-hidden bg-nebula-maroon/40 min-h-[200px]">
                     ${mediaHTML}
                     <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-3 md:p-6">
