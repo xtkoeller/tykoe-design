@@ -71,7 +71,7 @@ const PROJECTS = [
         category: "ILLUSTRATION",
         file: "who-know_zyfkld.gif",
         desc: "Psychedelic still loop.",
-        hideOverlay: true    
+        hideOverlay: true
     },
     {
         id: "20",
@@ -520,11 +520,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const mainCategory = project.category.split(' ')[0];
             
             // Logic for hiding the text overlay
+            // UPDATED: Gradient changed to low opacity gold fade
             const overlayContent = shouldHideOverlay ? '' : `
-                <div class="absolute inset-0 bg-gradient-to-t from-nebula-dark/90 via-transparent to-transparent opacity-60"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-tykoe-gold/30 to-transparent opacity-100"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-100 transition-opacity duration-300">
                     <div class="w-full h-[1px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2"></div>
-                    <h3 class="text-xs md:text-sm font-consolas font-bold text-white group-hover:text-tykoe-gold">${project.title}</h3>
+                    <h3 class="text-xs md:text-sm font-consolas font-bold text-white group-hover:text-tykoe-gold drop-shadow-md">${project.title}</h3>
                     <p class="text-[9px] font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ${mainCategory}</p>
                 </div>
             `;
@@ -565,16 +566,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCat = document.getElementById('modal-cat');
     const modalId = document.getElementById('modal-id');
     const modalLinkBtn = document.getElementById('modal-link-btn');
+    const modalImgContainer = document.getElementById('modal-img-container');
+
+    // Zoom Toggle Handler
+    function toggleZoom() {
+        if (!modalImgContainer) return;
+
+        const isZoomed = modalImg.classList.contains('zoomed');
+
+        if (isZoomed) {
+            // Revert to fit
+            modalImg.classList.remove('zoomed', 'w-auto', 'h-auto', 'max-w-none', 'cursor-zoom-out');
+            modalImg.classList.add('cursor-zoom-in', 'w-full', 'md:w-auto', 'md:h-full');
+            
+            // Revert container
+            modalImgContainer.classList.remove('overflow-auto', 'block');
+            modalImgContainer.classList.add('overflow-hidden', 'flex', 'items-center', 'justify-center');
+        } else {
+            // Zoom in (Natural size or scale)
+            // Using max-w-none to allow it to exceed container
+            modalImg.classList.add('zoomed', 'w-auto', 'h-auto', 'max-w-none', 'cursor-zoom-out');
+            modalImg.classList.remove('cursor-zoom-in', 'w-full', 'md:w-auto', 'md:h-full');
+
+            // Allow scroll
+            modalImgContainer.classList.add('overflow-auto', 'block');
+            modalImgContainer.classList.remove('overflow-hidden', 'flex', 'items-center', 'justify-center');
+        }
+    }
+
+    if (modalImg) {
+        modalImg.addEventListener('click', toggleZoom);
+    }
 
     function openModal(card) {
         // Update URL state
         const slug = card.getAttribute('data-slug');
         history.pushState(null, null, `#?${slug}`);
 
+        const pid = card.getAttribute('data-id');
+
         // Populate Data
         modalTitle.textContent = card.getAttribute('data-title');
         const src = card.getAttribute('data-img');
         
+        // Reset Zoom State on Open
+        if (modalImgContainer) {
+            modalImgContainer.classList.remove('overflow-auto', 'block');
+            modalImgContainer.classList.add('overflow-hidden', 'flex', 'items-center', 'justify-center');
+            modalImgContainer.scrollTop = 0;
+            modalImgContainer.scrollLeft = 0;
+        }
+
         if (isVideoFile(src)) {
             modalVideo.src = src;
             modalVideo.classList.remove('hidden');
@@ -589,11 +631,28 @@ document.addEventListener('DOMContentLoaded', () => {
             modalVideo.classList.add('hidden');
             modalVideo.classList.remove('block');
             modalVideo.pause();
+
+            // Reset standard classes first
+            modalImg.classList.remove('zoomed', 'cursor-zoom-out', 'w-auto', 'h-auto', 'max-w-none');
+            modalImg.classList.add('cursor-zoom-in');
+
+            // --- EXCEPTION: "Who Know" (ID 57) ---
+            // This image is extremely wide. md:h-full forces it to be too wide for the container.
+            // We force it to fit width-wise.
+            if (pid === "57") {
+                // Fit width, auto height
+                modalImg.classList.remove('md:w-auto', 'md:h-full');
+                modalImg.classList.add('w-full', 'h-auto'); 
+            } else {
+                // Standard behavior: Fit height on desktop
+                modalImg.classList.add('w-full', 'md:w-auto', 'md:h-full');
+                modalImg.classList.remove('h-auto'); // ensure it doesn't conflict
+            }
         }
 
         modalDesc.textContent = card.getAttribute('data-desc');
         modalCat.textContent = card.getAttribute('data-category');
-        modalId.textContent = card.getAttribute('data-id');
+        modalId.textContent = pid;
 
         // Hide link button completely for now
         if(modalLinkBtn) modalLinkBtn.parentElement.style.display = 'none';
