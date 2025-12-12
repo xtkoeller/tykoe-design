@@ -135,11 +135,11 @@
     </div>
 
     <!-- Main Content -->
-    <!-- Reduced width to max-w-[80%] on MD+, w-full on Mobile -->
-    <main class="flex-grow pt-32 pb-12 px-6 container mx-auto w-full md:max-w-[80%] z-10">
+    <!-- Removed px-6 from main on mobile to allow full width (px-0), added px-6 to header/filters to compensate -->
+    <main class="flex-grow pt-32 pb-12 px-0 md:px-6 container mx-auto w-full md:max-w-[80%] z-10">
         
         <!-- Hero Header -->
-        <div class="flex flex-col items-start gap-4 mb-8">
+        <div class="flex flex-col items-start gap-4 mb-8 px-6 md:px-0">
             <!-- Scaled down Text -->
             <h1 class="text-5xl md:text-7xl font-consolas font-bold tracking-tighter leading-[0.9] text-white shadow-black drop-shadow-lg text-left">
                VISUAL <br class="md:hidden" />
@@ -153,7 +153,10 @@
          </div>
 
          <!-- Hero Video -->
-         <div class="w-full aspect-video bg-black/80 border border-tykoe-periwinkle/20 relative overflow-hidden mb-8 shadow-[0_0_50px_rgba(0,0,0,0.5)] group rounded-sm">
+         <!-- Added px-6 on mobile only for this specific container if we want it to align with text, or keep it full width. 
+              Keeping full width as requested for content, but adding mx-6 for hero video usually looks better if text has padding.
+              Let's add mx-6 on mobile to match header, but leave grid full width. -->
+         <div class="w-auto mx-6 md:mx-0 aspect-video bg-black/80 border border-tykoe-periwinkle/20 relative overflow-hidden mb-8 shadow-[0_0_50px_rgba(0,0,0,0.5)] group rounded-sm">
             <!-- Overlay Elements - LOADING TEXT REMOVED -->
             <iframe 
               width="100%" height="100%" 
@@ -169,7 +172,7 @@
         </div>
 
         <!-- Filter Buttons -->
-        <div id="category-filters" class="mb-12 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest text-gray-500">
+        <div id="category-filters" class="mb-12 px-6 md:px-0 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest text-gray-500">
             <button class="filter-btn text-tykoe-gold font-bold border-b border-tykoe-gold scale-105 transition-all" data-category="ALL">ALL</button>
             <span class="text-tykoe-periwinkle/30">•</span>
             <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="MOTION">MOTION</button>
@@ -184,10 +187,10 @@
         </div>
 
         <!-- Project Grid (Populated via script.js) -->
-        <!-- Increased Columns: 3 on mobile (tight), 4 on Desktop (smaller items) -->
+        <!-- px-0 on mobile implies full width. -->
         <div id="project-grid" class="columns-2 md:columns-4 gap-4 space-y-4 min-h-[50vh]">
            <!-- Content injected by JS -->
-           <div class="animate-pulse text-tykoe-periwinkle/50 font-mono text-xs">LOADING_ASSETS...</div>
+           <div class="animate-pulse text-tykoe-periwinkle/50 font-mono text-xs px-6">LOADING_ASSETS...</div>
         </div>
     </main>
 
@@ -207,27 +210,31 @@
     </footer>
 
     <!-- Project Modal (Hidden by default) -->
-    <!-- Added pt-20/24 to separate from nav, pb-4 for bottom gap, and removed overflow-auto from backdrop to prevent double scrolling unless necessary. -->
-    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center pt-20 px-4 pb-4 md:pt-24 md:px-12 hidden">
+    <!-- Updated for Mobile Scrolling:
+         1. Container: overflow-y-auto on mobile, flex-col.
+         2. Image: flex-shrink-0, h-auto (natural height), w-full.
+         3. Text: flex-shrink-0.
+    -->
+    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center pt-20 px-0 pb-0 md:px-12 md:pb-4 md:pt-24 hidden">
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
         
         <!-- Fixed Close Button Top Right -->
-        <!-- Updated to top-24 on mobile to clear nav bar, top-6 on desktop. Removed background, added drop-shadow -->
         <button id="close-modal" class="fixed top-24 right-4 md:top-6 md:right-6 z-[140] text-tykoe-crimson hover:text-white transition-colors p-4 drop-shadow-md">
             <i data-lucide="x" width="32" height="32"></i>
         </button>
 
-        <!-- Modal Content Box: Fixed height to fit in viewport with top padding -->
-        <div class="relative z-10 w-full max-w-7xl h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 md:overflow-hidden">
+        <!-- Modal Content Box -->
+        <!-- Mobile: overflow-y-auto to allow scrolling the whole card. Desktop: overflow-hidden to allow text pane scrolling. -->
+        <div class="relative z-10 w-full max-w-7xl h-full md:h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 overflow-y-auto md:overflow-hidden">
             
             <!-- Image Side -->
-            <!-- Changed to flex center to handle object-contain scaling -->
-            <div class="relative w-full h-[50%] md:h-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 flex items-center justify-center overflow-hidden group">
+            <!-- Mobile: shrink-0 so it doesn't get squished, h-auto so it takes full height needed. -->
+            <div class="relative w-full h-auto md:h-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 flex items-center justify-center overflow-hidden group">
                 <!-- 
-                   Image: Max width/height 100% + object-contain ensuring full visibility
+                   Image: object-contain on desktop, w-full on mobile
                 -->
-                <img id="modal-img" src="" class="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500">
-                <video id="modal-video" src="" class="max-w-full max-h-full object-contain hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
+                <img id="modal-img" src="" class="w-full md:max-w-full md:max-h-full md:object-contain object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                <video id="modal-video" src="" class="w-full md:max-w-full md:max-h-full md:object-contain object-cover hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
                 
                 <div class="absolute bottom-4 left-4 text-tykoe-gold font-mono text-[10px] tracking-widest hidden md:block bg-black/50 px-2 py-1">
                     IMG_SRC: RAW_DATA
@@ -235,7 +242,8 @@
             </div>
 
             <!-- Content Side -->
-            <div class="w-full h-[50%] md:h-full md:w-[35%] flex flex-col md:overflow-y-auto custom-scrollbar bg-[#050101]">
+            <!-- Mobile: shrink-0 so it appears below image. -->
+            <div class="w-full h-auto md:h-full md:w-[35%] flex flex-col md:overflow-y-auto custom-scrollbar bg-[#050101] shrink-0">
                 <div class="p-6 md:p-10 border-b border-white/5 pb-6 relative shrink-0">
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-tykoe-gold to-tykoe-periwinkle opacity-50"></div>
                     <div class="flex items-center gap-2 text-tykoe-periwinkle mb-2 text-xs font-mono uppercase tracking-widest">
@@ -246,7 +254,7 @@
                         <span id="modal-cat" class="inline-flex items-center gap-1 px-3 py-1 bg-tykoe-gold/10 border border-tykoe-gold/30 text-tykoe-gold text-[10px] md:text-xs uppercase tracking-wider font-bold shadow-sm"></span>
                     </div>
                 </div>
-                <div class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6 overflow-y-auto md:overflow-visible">
+                <div class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6 overflow-visible">
                     <p id="modal-desc" class="first-letter:text-3xl first-letter:text-tykoe-gold first-letter:font-serif first-letter:mr-2 first-letter:float-left first-letter:leading-none"></p>
                     <!-- <p class="opacity-80">Additional project details, methodology, and creative process documentation would render here.</p> -->
                 </div>
