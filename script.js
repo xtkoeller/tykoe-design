@@ -642,11 +642,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pid === "57") {
                 // Fit width, auto height
                 modalImg.classList.remove('md:w-auto', 'md:h-full');
-                modalImg.classList.add('w-full', 'h-auto'); 
+                modalImg.classList.add('w-auto', 'h-auto'); 
             } else {
                 // Standard behavior: Fit height on desktop
-                modalImg.classList.add('w-full', 'md:w-auto', 'md:h-full');
-                modalImg.classList.remove('h-auto'); // ensure it doesn't conflict
+                modalImg.classList.add('w-auto', 'md:w-auto', 'md:h-auto');
+                //-tk  modalImg.classList.remove('h-auto'); // ensure it doesn't conflict
             }
         }
 
