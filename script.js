@@ -574,20 +574,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const isZoomed = modalImg.classList.contains('zoomed');
 
         if (isZoomed) {
-            // Revert to fit
-            modalImg.classList.remove('zoomed', 'w-auto', 'h-auto', 'max-w-none', 'cursor-zoom-out');
-            modalImg.classList.add('cursor-zoom-in', 'w-full', 'md:w-auto', 'md:h-full');
+            // Revert to Fit
+            // Remove zoom classes
+            modalImg.classList.remove('zoomed', 'max-w-none', 'max-h-none', 'cursor-zoom-out');
+            // Add fit classes
+            modalImg.classList.add('max-w-full', 'max-h-full', 'cursor-zoom-in');
             
-            // Revert container
+            // Revert container (center, no scroll)
             modalImgContainer.classList.remove('overflow-auto', 'block');
             modalImgContainer.classList.add('overflow-hidden', 'flex', 'items-center', 'justify-center');
         } else {
-            // Zoom in (Natural size or scale)
-            // Using max-w-none to allow it to exceed container
-            modalImg.classList.add('zoomed', 'w-auto', 'h-auto', 'max-w-none', 'cursor-zoom-out');
-            modalImg.classList.remove('cursor-zoom-in', 'w-full', 'md:w-auto', 'md:h-full');
+            // Zoom In
+            // Add zoom classes (allow natural size)
+            modalImg.classList.add('zoomed', 'max-w-none', 'max-h-none', 'cursor-zoom-out');
+            // Remove fit classes
+            modalImg.classList.remove('max-w-full', 'max-h-full', 'cursor-zoom-in');
 
-            // Allow scroll
+            // Allow Scroll (block display to respect scrolling of large content)
             modalImgContainer.classList.add('overflow-auto', 'block');
             modalImgContainer.classList.remove('overflow-hidden', 'flex', 'items-center', 'justify-center');
         }
@@ -608,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = card.getAttribute('data-title');
         const src = card.getAttribute('data-img');
         
-        // Reset Zoom State on Open
+        // Reset Zoom State on Open to "Fit"
         if (modalImgContainer) {
             modalImgContainer.classList.remove('overflow-auto', 'block');
             modalImgContainer.classList.add('overflow-hidden', 'flex', 'items-center', 'justify-center');
@@ -631,22 +634,9 @@ document.addEventListener('DOMContentLoaded', () => {
             modalVideo.classList.remove('block');
             modalVideo.pause();
 
-            // Reset standard classes first
-            modalImg.classList.remove('zoomed', 'cursor-zoom-out', 'w-auto', 'h-auto', 'max-w-none');
-            modalImg.classList.add('cursor-zoom-in');
-
-            // --- EXCEPTION: "Who Know" (ID 57) ---
-            // This image is extremely wide. md:h-full forces it to be too wide for the container.
-            // We force it to fit width-wise.
-            if (pid === "57") {
-                // Fit width, auto height
-                modalImg.classList.remove('md:w-auto', 'md:h-full');
-                modalImg.classList.add('w-auto', 'h-auto'); 
-            } else {
-                // Standard behavior: Fit height on desktop
-                modalImg.classList.add('w-auto', 'md:w-auto', 'md:h-auto');
-                //-tk  modalImg.classList.remove('h-auto'); // ensure it doesn't conflict
-            }
+            // RESET TO FIT STATE
+            // Base classes + Fit classes
+            modalImg.className = "max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 cursor-zoom-in";
         }
 
         modalDesc.textContent = card.getAttribute('data-desc');
