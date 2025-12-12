@@ -154,10 +154,7 @@
 
          <!-- Hero Video -->
          <div class="w-full aspect-video bg-black/80 border border-tykoe-periwinkle/20 relative overflow-hidden mb-8 shadow-[0_0_50px_rgba(0,0,0,0.5)] group rounded-sm">
-            <!-- Overlay Elements -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-tykoe-periwinkle/30 font-mono text-sm z-0">
-               <div class="animate-pulse">LOADING STREAM...</div>
-            </div>
+            <!-- Overlay Elements - LOADING TEXT REMOVED -->
             <iframe 
               width="100%" height="100%" 
               src="https://www.youtube.com/embed/kerkGqqFMq4?si=p5wKkB0Dt1135mI8&autoplay=1&mute=1&loop=1&playlist=kerkGqqFMq4&controls=0&playsinline=1&rel=0" 
@@ -215,8 +212,8 @@
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
         
         <!-- Fixed Close Button Top Right -->
-        <!-- Updated to top-24 on mobile to clear nav bar, top-6 on desktop -->
-        <button id="close-modal" class="fixed top-24 right-4 md:top-6 md:right-6 z-[140] text-tykoe-crimson hover:text-white transition-colors p-4 bg-black/50 rounded-full md:bg-transparent">
+        <!-- Updated to top-24 on mobile to clear nav bar, top-6 on desktop. Removed background, added drop-shadow -->
+        <button id="close-modal" class="fixed top-24 right-4 md:top-6 md:right-6 z-[140] text-tykoe-crimson hover:text-white transition-colors p-4 drop-shadow-md">
             <i data-lucide="x" width="32" height="32"></i>
         </button>
 
