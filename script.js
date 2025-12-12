@@ -68,9 +68,10 @@ const PROJECTS = [
     {
         id: "57",
         title: "Who Know",
-        category: "MOTION ART",
+        category: "ILLUSTRATION",
         file: "who-know_zyfkld.gif",
-        desc: "Psychedelic motion loop."
+        desc: "Psychedelic still loop.",
+        hideOverlay: true    
     },
     {
         id: "20",
