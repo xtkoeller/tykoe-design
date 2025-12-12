@@ -35,3 +35,7 @@ body {
 #modal-video.block {
     display: block;
 }
+
+*, ::before, ::after {
+    --tw-gradient-to-position: 75px;
+}
