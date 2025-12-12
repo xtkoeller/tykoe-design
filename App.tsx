@@ -1,1 +1,0 @@
-// This file is no longer used. The site is now static HTML/JS.
