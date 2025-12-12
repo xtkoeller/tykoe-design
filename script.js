@@ -520,13 +520,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const mainCategory = project.category.split(' ')[0];
             
             // Logic for hiding the text overlay
-            // UPDATED: Gradient changed to low opacity gold fade
+            // UPDATED: Removed gradient entirely. Increased subtitle to text-[10px]
             const overlayContent = shouldHideOverlay ? '' : `
-                <div class="absolute inset-0 bg-gradient-to-t from-tykoe-gold/30 to-transparent opacity-100"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-100 transition-opacity duration-300">
                     <div class="w-full h-[1px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2"></div>
                     <h3 class="text-xs md:text-sm font-consolas font-bold text-white group-hover:text-tykoe-gold drop-shadow-md">${project.title}</h3>
-                    <p class="text-[9px] font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ${mainCategory}</p>
+                    <p class="text-[10px] font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ${mainCategory}</p>
                 </div>
             `;
 
