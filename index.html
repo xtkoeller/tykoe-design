@@ -210,10 +210,11 @@
     </footer>
 
     <!-- Project Modal (Hidden by default) -->
-    <!-- Updated for Mobile Scrolling:
-         1. Container: overflow-y-auto on mobile, flex-col.
-         2. Image: flex-shrink-0, h-auto (natural height), w-full.
-         3. Text: flex-shrink-0.
+    <!-- Updated for Perfect Fit (No Letterboxing):
+         1. Modal Wrapper: w-auto md:max-w-[95vw] on desktop (fits content).
+         2. Image Container: w-auto (fits image). Removed bg-black.
+         3. Text Container: Fixed width (w-[28rem]) on desktop.
+         4. Image: md:h-full md:w-auto.
     -->
     <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center pt-20 px-0 pb-0 md:px-12 md:pb-4 md:pt-24 hidden">
         <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
@@ -224,17 +225,17 @@
         </button>
 
         <!-- Modal Content Box -->
-        <!-- Mobile: overflow-y-auto to allow scrolling the whole card. Desktop: overflow-hidden to allow text pane scrolling. -->
-        <div class="relative z-10 w-full max-w-7xl h-full md:h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 overflow-y-auto md:overflow-hidden">
+        <!-- Desktop: w-auto (fits contents), inline-flex behavior via flex-row -->
+        <div class="relative z-10 w-full md:w-auto md:max-w-[95vw] h-full md:h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 overflow-y-auto md:overflow-hidden">
             
             <!-- Image Side -->
-            <!-- Mobile: shrink-0 so it doesn't get squished, h-auto so it takes full height needed. -->
-            <div class="relative w-full h-auto md:h-full md:w-[65%] bg-black border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 flex items-center justify-center overflow-hidden group">
+            <!-- Desktop: w-auto, bg-transparent (removes letterboxing visual). -->
+            <div class="relative w-full h-auto md:h-full md:w-auto bg-transparent border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 flex items-center justify-center overflow-hidden group">
                 <!-- 
-                   Image: object-contain on desktop, w-full on mobile
+                   Image: h-full w-auto on desktop
                 -->
-                <img id="modal-img" src="" class="w-full md:max-w-full md:max-h-full md:object-contain object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
-                <video id="modal-video" src="" class="w-full md:max-w-full md:max-h-full md:object-contain object-cover hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
+                <img id="modal-img" src="" class="w-full md:w-auto md:h-full object-contain md:max-w-none opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                <video id="modal-video" src="" class="w-full md:w-auto md:h-full object-contain md:max-w-none hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
                 
                 <div class="absolute bottom-4 left-4 text-tykoe-gold font-mono text-[10px] tracking-widest hidden md:block bg-black/50 px-2 py-1">
                     IMG_SRC: RAW_DATA
@@ -242,8 +243,8 @@
             </div>
 
             <!-- Content Side -->
-            <!-- Mobile: shrink-0 so it appears below image. -->
-            <div class="w-full h-auto md:h-full md:w-[35%] flex flex-col md:overflow-y-auto custom-scrollbar bg-[#050101] shrink-0">
+            <!-- Desktop: Fixed width 28rem (~450px) -->
+            <div class="w-full h-auto md:h-full md:w-[28rem] flex flex-col md:overflow-y-auto custom-scrollbar bg-[#050101] shrink-0">
                 <div class="p-6 md:p-10 border-b border-white/5 pb-6 relative shrink-0">
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-tykoe-gold to-tykoe-periwinkle opacity-50"></div>
                     <div class="flex items-center gap-2 text-tykoe-periwinkle mb-2 text-xs font-mono uppercase tracking-widest">
@@ -256,9 +257,8 @@
                 </div>
                 <div class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6 overflow-visible">
                     <p id="modal-desc" class="first-letter:text-3xl first-letter:text-tykoe-gold first-letter:font-serif first-letter:mr-2 first-letter:float-left first-letter:leading-none"></p>
-                    <!-- <p class="opacity-80">Additional project details, methodology, and creative process documentation would render here.</p> -->
                 </div>
-                <!-- Link Button Area (Hidden by JS script by default now) -->
+                <!-- Link Button Area -->
                 <div class="p-6 md:p-10 border-t border-white/5 bg-white/[0.02] shrink-0">
                     <a id="modal-link-btn" href="#" target="_blank" class="flex items-center justify-between w-full group bg-tykoe-gold hover:bg-tykoe-periwinkle text-black hover:text-white px-6 py-4 font-bold font-consolas transition-all duration-300">
                         <span>VISIT LIVE PROJECT</span>
