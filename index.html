@@ -1,73 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tykoe.com - Visual Archives</title>
-    
+
     <!-- Social Sharing / Link Previews -->
     <meta name="description" content="Digital Craftsman & Visual Artist. Exploring motion, illustration, and design.">
-    
+
     <!-- Open Graph (Facebook, iMessage, LinkedIn) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tykoe.com/" />
     <meta property="og:title" content="TYKOE - Visual Archives" />
-    <meta property="og:description" content="Digital Craftsman & Visual Artist. Exploring motion, illustration, and design." />
-    <meta property="og:image" content="https://res.cloudinary.com/dydqxus0f/image/upload/v1765490580/meta-image_001_wmuuf9.jpg" />
+    <meta property="og:description"
+        content="Digital Craftsman & Visual Artist. Exploring motion, illustration, and design." />
+    <meta property="og:image"
+        content="https://res.cloudinary.com/dydqxus0f/image/upload/v1765490580/meta-image_001_wmuuf9.jpg" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://tykoe.com/" />
     <meta name="twitter:title" content="TYKOE - Visual Archives" />
-    <meta name="twitter:description" content="Digital Craftsman & Visual Artist. Exploring motion, illustration, and design." />
-    <meta name="twitter:image" content="https://res.cloudinary.com/dydqxus0f/image/upload/v1765490580/meta-image_001_wmuuf9.jpg" />
+    <meta name="twitter:description"
+        content="Digital Craftsman & Visual Artist. Exploring motion, illustration, and design." />
+    <meta name="twitter:image"
+        content="https://res.cloudinary.com/dydqxus0f/image/upload/v1765490580/meta-image_001_wmuuf9.jpg" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Added Science Gothic (Variable Font) -->
-    <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
     <!-- Icons -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23140303'/><text x='50%' y='68%' font-family='sans-serif' font-weight='bold' font-size='60' fill='%23FFB300' text-anchor='middle'>TK</text></svg>">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!--goatcounter trackin -->
-    <script data-goatcounter="https://tykoe.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-    
+
+    <!-- Analytics (Cloudflare Web Analytics: 100% Free, Privacy-First, No Cookies) -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "d36c6651ad79e81be40b46619016f490"}'></script>
+
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              consolas: ['Consolas', 'Monaco', 'Courier New', 'monospace'],
-              mono: ['Space Mono', 'monospace'],
-              serif: ['Playfair Display', 'serif'],
-              garamond: ['"EB Garamond"', 'serif'],
-              science: ['"Science Gothic"', 'sans-serif'], // Specific Science Gothic font
-            },
-            colors: {
-              'nebula-dark': '#080101', 
-              'nebula-maroon': '#140303',
-              'nebula-red': '#2d0a0a',
-              'tykoe-gold': '#FFB300',
-              'tykoe-gold-dim': '#996D00',
-              'tykoe-gold-pale': '#FFE8B3',
-              'tykoe-orange': '#FF8800',
-              'tykoe-periwinkle': '#8C9EFF',
-              'tykoe-periwinkle-dim': '#5A6ABF',
-              'tykoe-cyan': '#00F0FF',
-              'tykoe-crimson': '#FF003C',
-            },
-            backgroundImage: {
-              'maroon-gradient': 'radial-gradient(circle at 50% 0%, #220404 0%, #050101 70%)',
-            },
-            animation: {
-              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        consolas: ['Consolas', 'Monaco', 'Courier New', 'monospace'],
+                        mono: ['Space Mono', 'monospace'],
+                        serif: ['Playfair Display', 'serif'],
+                        garamond: ['"EB Garamond"', 'serif'],
+                        science: ['"Science Gothic"', 'sans-serif'], // Specific Science Gothic font
+                    },
+                    colors: {
+                        'nebula-dark': '#080101',
+                        'nebula-maroon': '#140303',
+                        'nebula-red': '#2d0a0a',
+                        'tykoe-gold': '#FFB300',
+                        'tykoe-gold-dim': '#996D00',
+                        'tykoe-gold-pale': '#FFE8B3',
+                        'tykoe-orange': '#FF8800',
+                        'tykoe-periwinkle': '#8C9EFF',
+                        'tykoe-periwinkle-dim': '#5A6ABF',
+                        'tykoe-cyan': '#00F0FF',
+                        'tykoe-crimson': '#FF003C',
+                    },
+                    backgroundImage: {
+                        'maroon-gradient': 'radial-gradient(circle at 50% 0%, #220404 0%, #050101 70%)',
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        glowPulse: {
+                            '0%, 100%': { filter: 'drop-shadow(0 0 15px rgba(255,179,0,0.4))' },
+                            '50%': { filter: 'drop-shadow(0 0 30px rgba(255,179,0,0.8))' },
+                        },
+                        dashFlow: {
+                            '0%': { strokeDashoffset: '400' },
+                            '100%': { strokeDashoffset: '0' }
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     </script>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
@@ -79,29 +103,41 @@
 }
 </script>
 </head>
-<body class="bg-nebula-dark text-white antialiased selection:bg-tykoe-periwinkle selection:text-nebula-dark bg-maroon-gradient min-h-screen flex flex-col">
+
+<body
+    class="bg-nebula-dark text-white antialiased selection:bg-tykoe-periwinkle selection:text-nebula-dark bg-maroon-gradient min-h-screen flex flex-col">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-[120] font-mono py-3 border-b border-tykoe-gold bg-gradient-to-br from-[#250808] to-[#401212]">
-        <div class="container mx-auto w-full md:max-w-[80%] px-6 flex justify-between items-center relative min-h-[40px]">
-            
+    <nav
+        class="fixed top-0 w-full z-[120] font-mono py-3 border-b border-tykoe-gold bg-gradient-to-br from-[#250808] to-[#401212]">
+        <div
+            class="container mx-auto w-full md:max-w-[80%] px-6 flex justify-between items-center relative min-h-[40px]">
+
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden z-20 text-tykoe-periwinkle hover:text-white transition-colors">
+            <button id="mobile-menu-btn"
+                class="md:hidden z-20 text-tykoe-periwinkle hover:text-white transition-colors ml-auto">
                 <i data-lucide="more-vertical" width="28" height="28"></i>
             </button>
 
             <!-- Logo -->
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0">
-                <div class="relative flex justify-center md:justify-start">
-                    <!-- Wave Decoration -->
-                    <svg class="absolute top-1/2 -translate-y-1/2 -z-10 pointer-events-none text-tykoe-periwinkle left-1/2 -translate-x-1/2 w-[120%] md:left-0 md:translate-x-[-5%] md:w-[140%]" 
-                         viewBox="0 0 520 60" fill="none" preserveAspectRatio="xMidYMid meet"
-                         style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
-                        <path d="M 0 30 Q 10 10, 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <div
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0">
+                <div class="relative flex justify-center md:justify-start items-center">
+                    <!-- Wave Decoration - SVG Animated to undulate seamlessly -->
+                    <svg class="absolute top-1/2 -translate-y-1/2 -z-10 pointer-events-none text-tykoe-periwinkle left-1/2 -translate-x-1/2 w-[160%] md:left-0 md:translate-x-[-15%] md:w-[150%]"
+                        viewBox="0 0 520 60" fill="none" preserveAspectRatio="xMidYMid meet"
+                        style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
+                        <path
+                            d="M -80 30 Q -70 10, -60 30 T -40 30 T -20 30 T 0 30 T 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30 T 540 30 T 560 30 T 580 30 T 600 30"
+                            stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                            <animateTransform attributeName="transform" type="translate" from="0 0" to="-40 0"
+                                dur="2.25s" repeatCount="indefinite" />
+                        </path>
                     </svg>
-                    
+
                     <!-- Updated Logo: Science Gothic SemiBold (600), Orange Gradient -->
-                    <a href="/" class="text-3xl md:text-5xl font-science font-semibold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] via-[#FF8800] to-[#FFB300] hover:text-white transition-all drop-shadow-[0_0_12px_rgba(255,69,0,0.4)] pb-1">
+                    <a href="/"
+                        class="text-3xl md:text-5xl font-science font-semibold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] via-[#FF8800] to-[#FFB300] hover:text-white transition-all drop-shadow-[0_0_12px_rgba(255,69,0,0.4)] relative z-10">
                         TYKOE
                     </a>
                 </div>
@@ -113,152 +149,212 @@
                     Work
                     <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-100"></span>
                 </a>
-                <a href="about" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
+                <a href="about"
+                    class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     About
-                    <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
-                <a href="contact" class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
+                <a href="contact"
+                    class="relative text-sm font-bold uppercase tracking-widest text-tykoe-periwinkle hover:text-tykoe-gold transition-colors py-2 group">
                     Contact
-                    <span class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-[2px] bg-tykoe-gold scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></span>
                 </a>
             </div>
         </div>
     </nav>
 
     <!-- Mobile Nav Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-[130] bg-nebula-maroon/95 backdrop-blur-xl flex flex-col justify-center transition-transform duration-500 ease-in-out translate-x-full md:hidden">
-        <button id="close-menu-btn" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-tykoe-crimson hover:text-tykoe-gold transition-colors">
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[130] bg-nebula-maroon/95 backdrop-blur-xl flex flex-col justify-center transition-transform duration-500 ease-in-out translate-x-full md:hidden">
+        <button id="close-menu-btn"
+            class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-tykoe-crimson hover:text-tykoe-gold transition-colors">
             <i data-lucide="x" width="32" height="32"></i>
         </button>
         <div class="flex flex-col items-start space-y-12 pl-12 w-full max-w-md mx-auto">
-            <a href="/" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Work</a>
-            <a href="about" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">About</a>
-            <a href="contact" class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Contact</a>
+            <a href="/"
+                class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Work</a>
+            <a href="about"
+                class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">About</a>
+            <a href="contact"
+                class="text-5xl font-consolas font-bold text-tykoe-crimson hover:text-tykoe-gold transition-colors tracking-tighter mobile-link">Contact</a>
         </div>
-        <div class="absolute bottom-12 w-full text-center text-tykoe-gold font-mono text-xs uppercase tracking-[0.2em] animate-pulse">
+        <div
+            class="absolute bottom-12 w-full text-center text-tykoe-gold font-mono text-xs uppercase tracking-[0.2em] animate-pulse">
             [ SYSTEM ONLINE ]
         </div>
     </div>
 
     <!-- Main Content -->
     <!-- Removed px-6 from main on mobile to allow full width (px-0), added px-6 to header/filters to compensate -->
-    <main class="flex-grow pt-32 pb-12 px-0 md:px-6 container mx-auto w-full md:max-w-[80%] z-10">
-        
-        <!-- Hero Header -->
-        <div class="flex flex-col items-start gap-4 mb-8 px-6 md:px-0">
-            <!-- Scaled down Text -->
-            <h1 class="text-5xl md:text-7xl font-consolas font-bold tracking-tighter leading-[0.9] text-white shadow-black drop-shadow-lg text-left">
-               VISUAL <br class="md:hidden" />
-               <span class="text-transparent bg-clip-text bg-gradient-to-r from-tykoe-gold to-tykoe-orange drop-shadow-[0_0_25px_rgba(255,179,0,0.5)]">
-                   ARCHIVES.
-               </span>
-            </h1>
-            <p class="text-base md:text-xl font-serif italic text-gray-300 border-l-2 border-tykoe-periwinkle/50 pl-4 max-w-2xl">
-               Digital Craftsman & Visual Artist
-            </p>
-         </div>
+    <main
+        class="flex-grow pt-32 pb-12 px-0 md:px-6 container mx-auto w-full md:max-w-[80%] z-10 animate-[fadeInUp_1s_ease-out_forwards]">
 
-         <!-- Hero Video -->
-         <!-- Added px-6 on mobile only for this specific container if we want it to align with text, or keep it full width. 
+        <!-- Hero Header -->
+        <div
+            class="flex flex-col items-start gap-4 mb-8 px-6 md:px-0 opacity-0 animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
+            <!-- Scaled down Text -->
+            <h1
+                class="text-5xl md:text-7xl font-consolas font-bold tracking-tighter leading-[0.9] text-white shadow-black drop-shadow-lg text-left group">
+                VISUAL <br class="md:hidden" />
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-tykoe-gold to-tykoe-orange animate-glow-pulse inline-block">
+                    ARCHIVES.
+                </span>
+            </h1>
+            <p
+                class="text-base md:text-xl font-serif italic text-gray-300 border-l-2 border-tykoe-periwinkle/50 pl-4 max-w-2xl">
+                Digital Craftsman & Visual Artist
+            </p>
+        </div>
+
+        <!-- Hero Video -->
+        <!-- Added px-6 on mobile only for this specific container if we want it to align with text, or keep it full width. 
               Keeping full width as requested for content, but adding mx-6 for hero video usually looks better if text has padding.
               Let's add mx-6 on mobile to match header, but leave grid full width. -->
-         <div class="w-auto mx-6 md:mx-0 aspect-video bg-black/80 border border-tykoe-periwinkle/20 relative overflow-hidden mb-8 shadow-[0_0_50px_rgba(0,0,0,0.5)] group rounded-sm">
-            <!-- Overlay Elements - LOADING TEXT REMOVED -->
-            <iframe 
-              width="100%" height="100%" 
-              src="https://www.youtube.com/embed/kerkGqqFMq4?si=p5wKkB0Dt1135mI8&autoplay=1&mute=1&loop=1&playlist=kerkGqqFMq4&controls=0&playsinline=1&rel=0" 
-              title="Motion Design Reel" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              class="absolute inset-0 w-full h-full object-cover z-10 opacity-90 group-hover:opacity-100 transition-opacity duration-700 mix-blend-screen md:mix-blend-normal"
-            ></iframe>
-            <div class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 bg-[length:100%_4px,6px_100%] opacity-20"></div>
+        <!-- Hero Video -->
+        <div
+            class="w-auto mx-6 md:mx-0 aspect-video bg-black border border-tykoe-periwinkle/20 relative overflow-hidden mb-8 shadow-[0_0_50px_rgba(0,0,0,0.5)] hover:shadow-[0_0_80px_rgba(255,179,0,0.2)] hover:border-tykoe-gold/50 transition-all duration-700 group rounded-sm opacity-0 animate-[fadeInUp_1s_ease-out_0.4s_forwards] hero-parallax">
+            <!-- Overlay Elements -->
+            <iframe width="100%" height="100%"
+                src="https://www.youtube.com/embed/kerkGqqFMq4?si=p5wKkB0Dt1135mI8&autoplay=1&mute=1&loop=1&playlist=kerkGqqFMq4&controls=0&playsinline=1&rel=0"
+                title="Motion Design Reel" frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                class="absolute inset-0 w-full h-full object-cover z-10 opacity-90 group-hover:opacity-100 transition-opacity duration-700 mix-blend-screen md:mix-blend-normal"></iframe>
+
             <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-tykoe-gold z-20"></div>
             <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-tykoe-gold z-20"></div>
         </div>
 
+        <!-- Animated Mid-Wave Divider (Matching Header) -->
+        <div
+            class="w-full flex justify-center mb-8 px-6 md:px-0 opacity-0 animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
+            <div class="relative w-[180px] md:w-[220px] h-[60px] flex items-center justify-center overflow-hidden"
+                style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
+                <svg class="absolute pointer-events-none text-tykoe-periwinkle min-w-[520px]" viewBox="0 0 520 60"
+                    fill="none" preserveAspectRatio="xMidYMid meet">
+                    <path
+                        d="M -80 30 Q -70 10, -60 30 T -40 30 T -20 30 T 0 30 T 20 30 T 40 30 T 60 30 T 80 30 T 100 30 T 120 30 T 140 30 T 160 30 T 180 30 T 200 30 T 220 30 T 240 30 T 260 30 T 280 30 T 300 30 T 320 30 T 340 30 T 360 30 T 380 30 T 400 30 T 420 30 T 440 30 T 460 30 T 480 30 T 500 30 T 520 30 T 540 30 T 560 30 T 580 30 T 600 30"
+                        stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                        <animateTransform attributeName="transform" type="translate" from="0 0" to="-40 0" dur="2.25s"
+                            repeatCount="indefinite" />
+                    </path>
+                </svg>
+            </div>
+        </div>
+
         <!-- Filter Buttons -->
-        <div id="category-filters" class="mb-12 px-6 md:px-0 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest text-gray-500">
-            <button class="filter-btn text-tykoe-gold font-bold border-b border-tykoe-gold scale-105 transition-all" data-category="ALL">ALL</button>
+        <div id="category-filters"
+            class="mb-12 px-6 md:px-0 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest text-gray-500 opacity-0 animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
+            <button
+                class="filter-btn text-tykoe-gold font-bold border-b border-tykoe-gold scale-105 transition-all text-shadow-glow"
+                data-category="ALL">ALL</button>
             <span class="text-tykoe-periwinkle/30">•</span>
             <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="MOTION">MOTION</button>
             <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="ILLUSTRATION">ILLUSTRATION</button>
+            <button class="filter-btn hover:text-tykoe-periwinkle transition-all"
+                data-category="ILLUSTRATION">ILLUSTRATION</button>
             <span class="text-tykoe-periwinkle/30">•</span>
             <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="DESIGN">DESIGN</button>
             <span class="text-tykoe-periwinkle/30">•</span>
-            <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="BRANDING">BRANDING</button>
+            <button class="filter-btn hover:text-tykoe-periwinkle transition-all"
+                data-category="BRANDING">BRANDING</button>
             <span class="text-tykoe-periwinkle/30">•</span>
             <button class="filter-btn hover:text-tykoe-periwinkle transition-all" data-category="ART">ART</button>
         </div>
 
         <!-- Project Grid (Populated via script.js) -->
-        <!-- px-0 on mobile implies full width. -->
-        <div id="project-grid" class="columns-2 md:columns-4 gap-4 space-y-4 min-h-[50vh]">
-           <!-- Content injected by JS -->
-           <div class="animate-pulse text-tykoe-periwinkle/50 font-mono text-xs px-6">LOADING_ASSETS...</div>
+        <!-- Group hover applied to grid to trigger dimming effect on children -->
+        <div id="project-grid" class="columns-2 md:columns-4 gap-4 space-y-4 min-h-[50vh] group/grid">
+            <!-- Content injected by JS -->
+            <div class="animate-pulse text-tykoe-periwinkle/50 font-mono text-xs px-6">LOADING_ASSETS...</div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-red-900/20 bg-nebula-dark py-12 px-6 font-mono text-xs uppercase tracking-widest relative z-20">
-        <div class="container mx-auto w-full md:max-w-[80%] flex flex-col md:flex-row justify-between items-center text-gray-600">
-          <div class="flex items-center gap-4 mb-4 md:mb-0">
-              <a href="index.html" class="hover:text-tykoe-gold transition-colors">TYKOE.COM</a>
-              <span class="text-tykoe-periwinkle/30">//</span>
-              <a href="https://instagram.com/tykoe.exe" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
-                <i data-lucide="instagram" width="14" height="14" class="text-tykoe-gold"></i>
-                <span>@TYKOE.EXE</span>
-              </a>
-          </div>
-          <div>© <span id="year">2024</span></div>
+    <footer
+        class="border-t border-red-900/20 bg-nebula-dark py-12 px-6 font-mono text-xs uppercase tracking-widest relative z-20">
+        <div
+            class="container mx-auto w-full md:max-w-[80%] flex flex-col md:flex-row justify-between items-center text-gray-600">
+            <div class="flex items-center gap-4 mb-4 md:mb-0">
+                <a href="index.html" class="hover:text-tykoe-gold transition-colors">TYKOE.COM</a>
+                <span class="text-tykoe-periwinkle/30">//</span>
+                <a href="https://instagram.com/tykoe.exe" target="_blank"
+                    class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i data-lucide="instagram" width="14" height="14" class="text-tykoe-gold"></i>
+                    <span>@TYKOE.EXE</span>
+                </a>
+            </div>
+            <div>© <span id="year">2024</span></div>
         </div>
     </footer>
 
     <!-- Project Modal (Hidden by default) -->
-    <div id="modal-backdrop" class="fixed inset-0 z-[100] flex items-center justify-center pt-20 px-0 pb-0 md:px-12 md:pb-4 md:pt-24 hidden">
-        <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl transition-opacity duration-300 fixed"></div>
-        
+    <!-- Removed 'hidden' and handled opacity/pointer-events instead for smooth entry -->
+    <div id="modal-backdrop"
+        class="fixed inset-0 z-[100] flex items-center justify-center pt-20 px-0 pb-0 md:px-12 md:pb-4 md:pt-24 opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-nebula-dark/95 backdrop-blur-xl fixed"></div>
+
         <!-- Fixed Close Button Top Right -->
-        <button id="close-modal" class="fixed top-24 right-4 md:top-6 md:right-6 z-[140] text-tykoe-crimson hover:text-white transition-colors p-4 drop-shadow-md">
+        <button id="close-modal"
+            class="fixed top-24 right-4 md:top-6 md:right-6 z-[140] text-tykoe-crimson hover:text-white transition-colors p-4 drop-shadow-md opacity-0 translate-y-4 transition-all duration-700 delay-300">
             <i data-lucide="x" width="32" height="32"></i>
         </button>
 
         <!-- Modal Content Box -->
-        <div class="relative z-10 w-full md:w-auto md:max-w-[95vw] h-full md:h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300 overflow-y-auto md:overflow-hidden">
-            
+        <!-- Changed typical zoom-in to scale logic toggled by parent class for snappier spring integration -->
+        <div id="modal-content-box"
+            class="relative z-10 w-full md:w-auto md:max-w-[95vw] h-full md:h-[85vh] bg-[#050505] border border-tykoe-periwinkle/30 shadow-[0_0_100px_rgba(108,133,255,0.15)] flex flex-col md:flex-row overflow-y-auto md:overflow-hidden scale-95 opacity-0 translate-y-8 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+
             <!-- Image Side -->
             <!-- Added id="modal-img-container" for Zoom logic -->
-            <div id="modal-img-container" class="relative w-full h-auto md:h-full md:w-auto bg-transparent border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 flex items-center justify-center overflow-hidden custom-scrollbar group">
+            <div id="modal-img-container"
+                class="relative w-full h-auto md:h-full md:w-auto bg-transparent border-b md:border-b-0 md:border-r border-tykoe-periwinkle/20 shrink-0 flex items-center justify-center overflow-hidden custom-scrollbar group">
                 <!-- 
                    Image: Initial state is FIT (max-w-full, max-h-full)
                 -->
-                <img id="modal-img" src="" class="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 cursor-zoom-in">
-                <video id="modal-video" src="" class="w-full md:w-auto md:h-full object-contain md:max-w-none hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500" loop muted playsinline autoplay controls></video>
-                
-                <div class="absolute bottom-4 left-4 text-tykoe-gold font-mono text-[10px] tracking-widest hidden md:block bg-black/50 px-2 py-1 pointer-events-none">
+                <img id="modal-img" src=""
+                    class="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 cursor-zoom-in">
+                <video id="modal-video" src=""
+                    class="w-full md:w-auto md:h-full object-contain md:max-w-none hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                    loop muted playsinline autoplay controls></video>
+
+                <div
+                    class="absolute bottom-4 left-4 text-tykoe-gold font-mono text-[10px] tracking-widest hidden md:block bg-black/50 px-2 py-1 pointer-events-none">
                     IMG_SRC: RAW_DATA
                 </div>
             </div>
 
             <!-- Content Side -->
-            <div class="w-full h-auto md:h-full md:w-[28rem] flex flex-col md:overflow-y-auto custom-scrollbar bg-[#050101] shrink-0">
+            <div
+                class="w-full h-auto md:h-full md:w-[28rem] flex flex-col md:overflow-y-auto custom-scrollbar bg-[#050101] shrink-0">
                 <div class="p-6 md:p-10 border-b border-white/5 pb-6 relative shrink-0">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-tykoe-gold to-tykoe-periwinkle opacity-50"></div>
-                    <div class="flex items-center gap-2 text-tykoe-periwinkle mb-2 text-xs font-mono uppercase tracking-widest">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-tykoe-gold to-tykoe-periwinkle opacity-50">
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-tykoe-periwinkle mb-2 text-xs font-mono uppercase tracking-widest">
                         <i data-lucide="hash" width="12"></i> <span>Project_ID: <span id="modal-id">000</span></span>
                     </div>
-                    <h2 id="modal-title" class="text-3xl md:text-5xl font-consolas font-bold text-white mb-2 leading-none tracking-tighter"></h2>
+                    <h2 id="modal-title"
+                        class="text-3xl md:text-5xl font-consolas font-bold text-white mb-2 leading-none tracking-tighter">
+                    </h2>
                     <div class="mt-4">
-                        <span id="modal-cat" class="inline-flex items-center gap-1 px-3 py-1 bg-tykoe-gold/10 border border-tykoe-gold/30 text-tykoe-gold text-[10px] md:text-xs uppercase tracking-wider font-bold shadow-sm"></span>
+                        <span id="modal-cat"
+                            class="inline-flex items-center gap-1 px-3 py-1 bg-tykoe-gold/10 border border-tykoe-gold/30 text-tykoe-gold text-[10px] md:text-xs uppercase tracking-wider font-bold shadow-sm"></span>
                     </div>
                 </div>
-                <div class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6 overflow-visible">
-                    <p id="modal-desc" class="first-letter:text-3xl first-letter:text-tykoe-gold first-letter:font-serif first-letter:mr-2 first-letter:float-left first-letter:leading-none"></p>
+                <div
+                    class="p-6 md:p-10 flex-grow text-gray-300 font-mono text-sm md:text-base leading-relaxed space-y-6 overflow-visible">
+                    <p id="modal-desc"
+                        class="first-letter:text-3xl first-letter:text-tykoe-gold first-letter:font-serif first-letter:mr-2 first-letter:float-left first-letter:leading-none">
+                    </p>
                 </div>
                 <!-- Link Button Area -->
                 <div class="p-6 md:p-10 border-t border-white/5 bg-white/[0.02] shrink-0">
-                    <a id="modal-link-btn" href="#" target="_blank" class="flex items-center justify-between w-full group bg-tykoe-gold hover:bg-tykoe-periwinkle text-black hover:text-white px-6 py-4 font-bold font-consolas transition-all duration-300">
+                    <a id="modal-link-btn" href="#" target="_blank"
+                        class="flex items-center justify-between w-full group bg-tykoe-gold hover:bg-tykoe-periwinkle text-black hover:text-white px-6 py-4 font-bold font-consolas transition-all duration-300">
                         <span>VISIT LIVE PROJECT</span>
                         <i data-lucide="external-link" width="20"></i>
                     </a>
@@ -273,4 +369,5 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
+
 </html>

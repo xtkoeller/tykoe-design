@@ -4,13 +4,13 @@
 
 // Your Cloudinary Configuration
 const CLOUD_NAME = "dydqxus0f";
-const CLOUD_FOLDER = ""; 
+const CLOUD_FOLDER = "";
 
 // Helper to generate the correct Cloudinary URL based on file type
 const getAssetUrl = (filename) => {
     const isVideo = filename.toLowerCase().endsWith('.mp4') || filename.toLowerCase().endsWith('.webm');
     const resourceType = isVideo ? 'video' : 'image';
-    
+
     // Cloudinary Transformations:
     const params = isVideo ? 'q_auto' : 'f_auto,q_auto';
 
@@ -101,7 +101,7 @@ const PROJECTS = [
         category: "MOTION DESIGN",
         file: "loch-doubt-title_001_rzdapq.gif",
         desc: "Title sequence animation for independent film project. Moody and atmospheric.",
-        hideOverlay: true
+
     },
     {
         id: "23",
@@ -433,13 +433,13 @@ const PROJECTS = [
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Mobile Menu Logic ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    if(mobileMenuBtn && mobileMenu) {
+    if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.remove('translate-x-full');
             mobileMenu.classList.add('translate-x-0');
@@ -456,6 +456,31 @@ document.addEventListener('DOMContentLoaded', () => {
         return filename.toLowerCase().endsWith('.mp4') || filename.toLowerCase().endsWith('.webm');
     };
 
+    // --- Scroll-Linked Wavy Lines ---
+    // Moved to CSS dash offset animation (see index.html and tailwind config)
+
+    // --- Magnetic 3D Hover Logic ---
+    // Removed global orientation parallax in favor of localized magnetic behavior.
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, idx) => {
+            if (entry.isIntersecting) {
+                // Determine the actual card element
+                const card = entry.target;
+                const innerWrapper = card.querySelector('.kinetic-inner');
+
+                if (innerWrapper) {
+                    // Swap opacity class instead of setting style inline, so nested hover logic isn't destroyed
+                    setTimeout(() => {
+                        innerWrapper.classList.remove('opacity-0');
+                        innerWrapper.classList.add('opacity-100');
+                    }, idx * 100);
+                }
+                fadeObserver.unobserve(card);
+            }
+        });
+    }, { threshold: 0.1 });
+
     // --- Render Projects ---
     const projectGrid = document.getElementById('project-grid');
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -463,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to handle filtering logic
     const filterProjects = (category) => {
         const projectCards = document.querySelectorAll('.project-card');
-        
+
         // Update UI buttons
         filterButtons.forEach(b => {
             const btnCat = b.getAttribute('data-category');
@@ -479,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Filter Grid
         projectCards.forEach(card => {
             const cardCategories = card.getAttribute('data-category').split(' ');
-            if(category === 'ALL' || cardCategories.some(c => c.toLowerCase() === category.toLowerCase())) {
+            if (category === 'ALL' || cardCategories.some(c => c.toLowerCase() === category.toLowerCase())) {
                 card.style.display = 'block';
             } else {
                 card.style.display = 'none';
@@ -498,45 +523,50 @@ document.addEventListener('DOMContentLoaded', () => {
             const shouldHideOverlay = project.hideOverlay === true;
 
             // Create Card Element
+            // Removed opacity/translate classes from the outer card to fix layout jumping in columns, logic moved to inner wrapper.
+            // Adjusted margins
             const card = document.createElement('div');
-            card.className = "project-card group relative mb-4 break-inside-avoid cursor-pointer";
+            card.className = "project-card relative mb-16 break-inside-avoid cursor-pointer";
             card.setAttribute('data-id', project.id);
             card.setAttribute('data-slug', slug);
             card.setAttribute('data-title', project.title);
             card.setAttribute('data-category', project.category);
             card.setAttribute('data-img', fullSrc);
             card.setAttribute('data-desc', project.desc);
-            if(project.link) card.setAttribute('data-link', project.link);
+            if (project.link) card.setAttribute('data-link', project.link);
 
             let mediaHTML = '';
             // Removed sepia classes
             if (isVid) {
                 // Remove h-auto constraint so it flows naturally in columns
-                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="w-full object-contain transition-transform duration-700 group-hover:scale-105"></video>`;
+                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="w-full object-contain transition-transform duration-1000 group-hover/card:scale-105"></video>`;
             } else {
-                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="w-full object-contain transition-transform duration-700 group-hover:scale-105">`;
+                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="w-full object-contain transition-transform duration-1000 group-hover/card:scale-105">`;
             }
 
-            const mainCategory = project.category.split(' ')[0];
-            
             // Logic for hiding the text overlay
-            // UPDATED: Removed gradient entirely. Increased subtitle to text-[10px]
-            const overlayContent = shouldHideOverlay ? '' : `
-                <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-100 transition-opacity duration-300">
-                    <div class="w-full h-[1px] bg-gradient-to-r from-tykoe-gold to-tykoe-orange mb-2"></div>
-                    <h3 class="text-xs md:text-sm font-consolas font-bold text-white group-hover:text-tykoe-gold drop-shadow-md">${project.title}</h3>
-                    <p class="text-[10px] font-mono uppercase tracking-widest text-tykoe-periwinkle/80">// ${mainCategory}</p>
+            // Tighter tracking, 2px border, layout tweaks
+            const mainCategory = project.category.split(' ')[0];
+            const textContent = shouldHideOverlay ? '' : `
+                <div class="mt-4 flex flex-col items-start transition-all duration-300">
+                    <h3 class="text-sm md:text-base font-consolas font-bold tracking-tight text-white md:group-hover/card:text-tykoe-gold transition-colors duration-[280ms] drop-shadow-sm">${project.title}</h3>
+                    <p class="text-[10px] font-mono uppercase tracking-widest text-tykoe-periwinkle/60 md:group-hover/card:text-tykoe-periwinkle transition-colors duration-[280ms] block w-full border-t-2 border-tykoe-gold/10 pt-1 mt-1">// ${mainCategory}</p>
                 </div>
             `;
 
             card.innerHTML = `
-                <div class="relative overflow-hidden bg-nebula-maroon/20">
-                    ${mediaHTML}
-                    ${overlayContent}
+                <div class="kinetic-inner group/card w-full h-full opacity-0 md:hover:!opacity-100 md:group-hover/grid:opacity-25 md:group-hover/grid:grayscale-[50%] md:hover:!grayscale-0 transition-all duration-[280ms] ease-out relative z-10 hover:z-50">
+                    <div class="image-wrapper relative overflow-hidden bg-nebula-maroon/20 rounded-sm border border-transparent md:group-hover/card:border-tykoe-gold/40 md:group-hover/card:shadow-[0_0_40px_rgba(255,179,0,0.2)] transition-all duration-[280ms] will-change-transform transform-style-preserve-3d pb-[2px]">
+                        ${mediaHTML}
+                        <!-- Subtle glass shine -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 md:group-hover/card:opacity-100 transform -translate-x-full md:group-hover/card:translate-x-full transition-transform duration-[280ms] z-10 pointer-events-none"></div>
+                    </div>
+                    ${textContent}
                 </div>
             `;
 
             projectGrid.appendChild(card);
+            fadeObserver.observe(card);
         });
 
         // Filter click events -> Update Hash
@@ -556,7 +586,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Modal Logic ---
     const modalBackdrop = document.getElementById('modal-backdrop');
     const closeModalBtn = document.getElementById('close-modal');
-    
+    const modalContentBox = document.getElementById('modal-content-box');
+
     // Modal Content Elements
     const modalTitle = document.getElementById('modal-title');
     const modalImg = document.getElementById('modal-img');
@@ -579,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImg.classList.remove('zoomed', 'max-w-none', 'max-h-none', 'cursor-zoom-out');
             // Add fit classes
             modalImg.classList.add('max-w-full', 'max-h-full', 'cursor-zoom-in');
-            
+
             // Revert container (center, no scroll)
             modalImgContainer.classList.remove('overflow-auto', 'block');
             modalImgContainer.classList.add('overflow-hidden', 'flex', 'items-center', 'justify-center');
@@ -600,17 +631,62 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImg.addEventListener('click', toggleZoom);
     }
 
-    function openModal(card) {
+    let currentProjectIndex = -1;
+
+    function getVisibleProjects() {
+        const hash = window.location.hash;
+        const category = hash.startsWith('#') && hash.length > 2 && !hash.startsWith('#?') ? hash.substring(1).toUpperCase() : 'ALL';
+
+        const projectCards = document.querySelectorAll('.project-card');
+        const visibleCards = [];
+
+        projectCards.forEach(card => {
+            if (card.style.display !== 'none') {
+                visibleCards.push(card);
+            }
+        });
+        return visibleCards;
+    }
+
+    function showNextProject() {
+        const visibleCards = getVisibleProjects();
+        if (visibleCards.length === 0 || currentProjectIndex === -1) return;
+
+        currentProjectIndex++;
+        if (currentProjectIndex >= visibleCards.length) {
+            currentProjectIndex = 0; // Wrap around
+        }
+        openModal(visibleCards[currentProjectIndex], false); // false prevents pushing state repeatedly
+    }
+
+    function showPrevProject() {
+        const visibleCards = getVisibleProjects();
+        if (visibleCards.length === 0 || currentProjectIndex === -1) return;
+
+        currentProjectIndex--;
+        if (currentProjectIndex < 0) {
+            currentProjectIndex = visibleCards.length - 1; // Wrap around
+        }
+        openModal(visibleCards[currentProjectIndex], false);
+    }
+
+    function openModal(card, updateHistory = true) {
         // Update URL state
         const slug = card.getAttribute('data-slug');
-        history.pushState(null, null, `#?${slug}`);
+        if (updateHistory) {
+            history.pushState(null, null, `#?${slug}`);
+        }
 
         const pid = card.getAttribute('data-id');
+
+        // find current index
+        const visibleCards = getVisibleProjects();
+        currentProjectIndex = Array.from(visibleCards).findIndex(c => c.getAttribute('data-id') === pid);
 
         // Populate Data
         modalTitle.textContent = card.getAttribute('data-title');
         const src = card.getAttribute('data-img');
-        
+
         // Reset Zoom State on Open to "Fit"
         if (modalImgContainer) {
             modalImgContainer.classList.remove('overflow-auto', 'block');
@@ -625,6 +701,13 @@ document.addEventListener('DOMContentLoaded', () => {
             modalVideo.classList.add('block');
             modalImg.classList.add('hidden');
             modalImg.classList.remove('block');
+
+            // Re-trigger animation
+            modalVideo.style.opacity = 0;
+            setTimeout(() => {
+                modalVideo.style.opacity = 1;
+            }, 50);
+
             modalVideo.play();
         } else {
             modalImg.src = src;
@@ -634,9 +717,15 @@ document.addEventListener('DOMContentLoaded', () => {
             modalVideo.classList.remove('block');
             modalVideo.pause();
 
+            // Re-trigger animation
+            modalImg.style.opacity = 0;
+            setTimeout(() => {
+                modalImg.style.opacity = 1;
+            }, 50);
+
             // RESET TO FIT STATE
             // Base classes + Fit classes
-            modalImg.className = "max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 cursor-zoom-in";
+            modalImg.className = "max-w-full max-h-full object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100 cursor-zoom-in";
         }
 
         modalDesc.textContent = card.getAttribute('data-desc');
@@ -644,57 +733,111 @@ document.addEventListener('DOMContentLoaded', () => {
         modalId.textContent = pid;
 
         // Hide link button completely for now
-        if(modalLinkBtn) modalLinkBtn.parentElement.style.display = 'none';
+        if (modalLinkBtn) modalLinkBtn.parentElement.style.display = 'none';
 
-        // Show Modal
-        modalBackdrop.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Lock Scroll
+        // Show Modal (Smooth Transition)
+        modalBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        modalBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+
+        // Trigger content animations
+        setTimeout(() => {
+            modalContentBox.classList.remove('opacity-0', 'translate-y-8', 'scale-95');
+            modalContentBox.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            closeModalBtn.classList.remove('opacity-0', 'translate-y-4');
+            closeModalBtn.classList.add('opacity-100', 'translate-y-0');
+        }, 50);
+
+        document.body.style.overflow = 'hidden'; // prevent bg scroll
     }
 
     function closeModal() {
-        // Revert URL to category or clean
-        const currentHash = window.location.hash;
-        if (currentHash.includes('?')) {
-            // If we are in project view, go back to just root or check if there was a filter
-            // For simplicity, we just go back to history state or clean url
-            history.pushState(null, null, ' '); 
-        }
+        modalContentBox.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+        modalContentBox.classList.add('opacity-0', 'translate-y-8', 'scale-95');
+        closeModalBtn.classList.remove('opacity-100', 'translate-y-0');
+        closeModalBtn.classList.add('opacity-0', 'translate-y-4');
 
-        modalBackdrop.classList.add('hidden');
-        document.body.style.overflow = ''; // Unlock Scroll
-        if(modalVideo) modalVideo.pause();
+        setTimeout(() => {
+            modalBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+            modalBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            // Cleanup media on close
+            if (modalVideo) modalVideo.pause();
+
+            const currentHash = window.location.hash;
+            if (currentHash.includes('?')) {
+                history.pushState(null, null, ' ');
+            }
+            document.body.style.overflow = '';
+        }, 300); // Wait for transition
     }
 
-    if(modalBackdrop) {
+    if (modalBackdrop) {
         // Open on Card Click (Delegation)
-        if(projectGrid) {
+        if (projectGrid) {
             projectGrid.addEventListener('click', (e) => {
                 const card = e.target.closest('.project-card');
-                if(card) {
+                if (card) {
                     openModal(card);
                 }
             });
         }
 
-        if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-        
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
         modalBackdrop.addEventListener('click', (e) => {
-            if(e.target === modalBackdrop || (e.target.classList.contains('absolute') && e.target.classList.contains('inset-0'))) {
+            if (e.target === modalBackdrop || (e.target.classList.contains('absolute') && e.target.classList.contains('inset-0'))) {
                 closeModal();
             }
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
+            if (modalBackdrop.classList.contains('pointer-events-none')) return;
+
+            if (e.key === 'Escape') {
                 closeModal();
+            } else if (e.key === 'ArrowRight') {
+                showNextProject();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevProject();
             }
         });
+
+        // --- Touch Swipe Logic for Modal ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const swipeThreshold = 50;
+
+        modalBackdrop.addEventListener('touchstart', (e) => {
+            // Only care about first touch
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        modalBackdrop.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            // Ignore zoom states if possible, but keep it simple for now
+            if (modalImg && modalImg.classList.contains('zoomed')) return;
+
+            const distance = touchEndX - touchStartX;
+            if (Math.abs(distance) < swipeThreshold) return;
+
+            // Swipe left (next)
+            if (distance < 0) {
+                showNextProject();
+            }
+            // Swipe right (prev)
+            else if (distance > 0) {
+                showPrevProject();
+            }
+        }
     }
 
     // --- Router / Hash Handler ---
     const handleHashChange = () => {
         const hash = window.location.hash;
-        
+
         if (!hash) return;
 
         if (hash.startsWith('#?')) {
@@ -719,9 +862,70 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Router
     window.addEventListener('hashchange', handleHashChange);
     // Trigger on load if hash exists
-    if(window.location.hash) {
+    if (window.location.hash) {
         // slight delay to ensure DOM is ready
         setTimeout(handleHashChange, 100);
     }
+
+    // ==========================================
+    // MAGNETIC 3D HOVER & MOBILE TILTING
+    // ==========================================
+    function initializeMagneticHover() {
+        const cards = document.querySelectorAll('.project-card');
+        const isMobile = window.innerWidth < 768;
+
+        // Mobile Gyroscope Tilting
+        if (isMobile && window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (e) => {
+                const tiltX = Math.min(Math.max(e.gamma || 0, -45), 45) / 45; // -1 to 1
+                const tiltY = Math.min(Math.max((e.beta - 45) || 0, -45), 45) / 45; // -1 to 1
+
+                cards.forEach(card => {
+                    const inner = card.querySelector('.kinetic-inner');
+                    if (!inner) return;
+
+                    const rotateY = tiltX * 8;
+                    const rotateX = -tiltY * 8;
+                    const translateZ = 15;
+
+                    inner.style.transition = 'transform 0.1s ease-out';
+                    inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+                });
+            });
+        }
+
+        // Desktop localized mouse magnetic hover
+        if (!isMobile) {
+            cards.forEach(card => {
+                const inner = card.querySelector('.kinetic-inner');
+                if (!inner) return;
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+                    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+                    const rotateY = x * 10;
+                    const rotateX = -y * 10;
+                    const translateZ = 30;
+                    const shadowX = -x * 20;
+                    const shadowY = -y * 20;
+
+                    inner.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
+                    inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+                    inner.querySelector('.image-wrapper').style.boxShadow = `${shadowX}px ${shadowY}px 50px rgba(0,0,0,0.6), 0 0 30px rgba(255,179,0,0.2)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    inner.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease';
+                    inner.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+                    inner.querySelector('.image-wrapper').style.boxShadow = '';
+                });
+            });
+        }
+    }
+
+    // Initialize hover logic once assets are loaded
+    setTimeout(initializeMagneticHover, 500);
 
 });
