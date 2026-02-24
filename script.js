@@ -71,7 +71,6 @@ const PROJECTS = [
         category: "ILLUSTRATION",
         file: "who-know_zyfkld.gif",
         desc: "Psychedelic still loop.",
-        hideOverlay: true
     },
     {
         id: "20",
@@ -555,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             card.innerHTML = `
-                <div class="kinetic-inner group/card w-full h-full opacity-0 md:hover:!opacity-100 md:group-hover/grid:opacity-25 md:group-hover/grid:grayscale-[50%] md:hover:!grayscale-0 transition-all duration-[280ms] ease-out relative z-10 hover:z-50">
+                <div class="kinetic-inner group/card w-full h-full opacity-0 md:hover:!opacity-100 md:group-hover/grid:opacity-25 md:group-hover/grid:grayscale-[50%] md:hover:!grayscale-0 transition-opacity duration-[280ms] ease-out relative z-10 hover:z-50">
                     <div class="image-wrapper relative overflow-hidden bg-nebula-maroon/20 rounded-sm border border-transparent md:group-hover/card:border-tykoe-gold/40 md:group-hover/card:shadow-[0_0_40px_rgba(255,179,0,0.2)] transition-all duration-[280ms] will-change-transform transform-style-preserve-3d pb-[2px]">
                         ${mediaHTML}
                         <!-- Subtle glass shine -->
