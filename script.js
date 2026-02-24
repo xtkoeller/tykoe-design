@@ -65,13 +65,13 @@ const PROJECTS = [
         file: "smile-gif_gwnwau.gif",
         desc: "Alternative glitch motion loop."
     },
-    {
-        id: "57",
-        title: "Who Know",
-        category: "ILLUSTRATION",
-        file: "who-know_zyfkld.gif",
-        desc: "Psychedelic still loop.",
-    },
+    // {
+    //     id: "57",
+    //     title: "Who Know",
+    //     category: "ILLUSTRATION",
+    //     file: "who-know_zyfkld.gif",
+    //     desc: "Psychedelic still loop.",
+    // },
     {
         id: "20",
         title: "Start Today",
