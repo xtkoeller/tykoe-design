@@ -397,13 +397,13 @@ const PROJECTS = [
         file: "no-dawg_rotr07.jpg",
         desc: "Tattoo style illustration design."
     },
-    {
-        id: "53",
-        title: "Spiral Snake",
-        category: "ART",
-        file: "Spiral-snake_rlholr.jpg",
-        desc: "Geometric pattern and form study."
-    },
+    // {
+    //     id: "53",
+    //     title: "Spiral Snake",
+    //     category: "ART",
+    //     file: "Spiral-snake_rlholr.jpg",
+    //     desc: "Geometric pattern and form study."
+    // },
     {
         id: "54",
         title: "TK-35",
