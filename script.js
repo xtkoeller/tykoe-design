@@ -537,9 +537,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Removed sepia classes
             if (isVid) {
                 // Remove h-auto constraint so it flows naturally in columns
-                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="w-full object-contain transition-transform duration-1000 group-hover/card:scale-105"></video>`;
+                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="block align-bottom !m-0 !mb-0 w-full object-contain transition-transform duration-1000 group-hover/card:scale-105"></video>`;
             } else {
-                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="w-full object-contain transition-transform duration-1000 group-hover/card:scale-105">`;
+                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="block align-bottom !m-0 !mb-0 w-full object-contain transition-transform duration-1000 group-hover/card:scale-105">`;
             }
 
             // Logic for hiding the text overlay
