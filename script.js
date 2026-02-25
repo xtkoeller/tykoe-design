@@ -35,7 +35,8 @@ const PROJECTS = [
         title: "Almonds",
         category: "MOTION ART",
         file: "almonds_cn4acj.mp4",
-        desc: "Cinematic sequence exploring organic forms and fluid motion. A study in texture and light."
+        desc: "Cinematic sequence exploring organic forms and fluid motion. A study in texture and light.",
+        aspectRatio: "2.35 / 1"
     },
     {
         id: "22",
@@ -533,13 +534,14 @@ document.addEventListener('DOMContentLoaded', () => {
             card.setAttribute('data-desc', project.desc);
             if (project.link) card.setAttribute('data-link', project.link);
 
-            let mediaHTML = '';
-            // Removed sepia classes
+            const aspectStyle = project.aspectRatio ? `aspect-ratio: ${project.aspectRatio};` : '';
+            const heightClass = project.aspectRatio ? '' : 'h-auto';
+
             if (isVid) {
-                // Remove h-auto constraint so it flows naturally in columns
-                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="block align-bottom !m-0 !mb-0 w-full object-contain transition-transform duration-1000 group-hover/card:scale-105"></video>`;
+                // Remove h-auto constraint so it flows naturally in columns unless overridden
+                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline style="${aspectStyle}" class="block align-top w-full ${heightClass} object-cover !m-0 !p-0 transition-transform duration-1000 group-hover/card:scale-105"></video>`;
             } else {
-                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="block align-bottom !m-0 !mb-0 w-full object-contain transition-transform duration-1000 group-hover/card:scale-105">`;
+                mediaHTML = `<img src="${fullSrc}" loading="lazy" style="${aspectStyle}" class="block align-top w-full ${heightClass} object-cover !m-0 !p-0 transition-transform duration-1000 group-hover/card:scale-105">`;
             }
 
             // Logic for hiding the text overlay
@@ -554,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.innerHTML = `
                 <div class="kinetic-inner group/card w-full h-full opacity-0 md:hover:!opacity-100 md:group-hover/grid:opacity-80 md:group-hover/grid:grayscale-[50%] md:hover:!grayscale-0 transition-opacity duration-[280ms] ease-out relative z-10 hover:z-50">
-                    <div class="image-wrapper relative overflow-hidden bg-nebula-maroon/20 rounded-sm border border-transparent md:group-hover/card:border-tykoe-gold/40 md:group-hover/card:shadow-[0_0_40px_rgba(255,179,0,0.2)] transition-all duration-[280ms] will-change-transform transform-style-preserve-3d pb-[2px]">
+                    <div class="image-wrapper block relative overflow-hidden bg-nebula-maroon/20 rounded-sm border border-transparent md:group-hover/card:border-tykoe-gold/40 md:group-hover/card:shadow-[0_0_40px_rgba(255,179,0,0.2)] transition-all duration-[280ms] will-change-transform transform-style-preserve-3d pb-[2px]">
                         ${mediaHTML}
                         <!-- Subtle glass shine -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 md:group-hover/card:opacity-100 transform -translate-x-full md:group-hover/card:translate-x-full transition-transform duration-[280ms] z-10 pointer-events-none"></div>
