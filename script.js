@@ -35,8 +35,7 @@ const PROJECTS = [
         title: "Almonds",
         category: "MOTION ART",
         file: "almonds_cn4acj.mp4",
-        desc: "Cinematic sequence exploring organic forms and fluid motion. A study in texture and light.",
-        aspectRatio: "2.35 / 1"
+        desc: "Cinematic sequence exploring organic forms and fluid motion. A study in texture and light."
     },
     {
         id: "22",
@@ -534,14 +533,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.setAttribute('data-desc', project.desc);
             if (project.link) card.setAttribute('data-link', project.link);
 
-            const aspectStyle = project.aspectRatio ? `aspect-ratio: ${project.aspectRatio};` : '';
-            const heightClass = project.aspectRatio ? '' : 'h-auto';
-
             if (isVid) {
                 // Remove h-auto constraint so it flows naturally in columns unless overridden
-                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline style="${aspectStyle}" class="block align-top w-full ${heightClass} object-cover !m-0 !p-0 transition-transform duration-1000 group-hover/card:scale-105"></video>`;
+                mediaHTML = `<video src="${fullSrc}" autoplay loop muted playsinline class="block align-top w-full h-auto object-cover !m-0 !p-0 transition-transform duration-1000 group-hover/card:scale-105"></video>`;
             } else {
-                mediaHTML = `<img src="${fullSrc}" loading="lazy" style="${aspectStyle}" class="block align-top w-full ${heightClass} object-cover !m-0 !p-0 transition-transform duration-1000 group-hover/card:scale-105">`;
+                mediaHTML = `<img src="${fullSrc}" loading="lazy" class="block align-top w-full h-auto object-cover !m-0 !p-0 transition-transform duration-1000 group-hover/card:scale-105">`;
             }
 
             // Logic for hiding the text overlay
